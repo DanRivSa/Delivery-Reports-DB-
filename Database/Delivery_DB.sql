@@ -8,7 +8,7 @@ CREATE OR REPLACE TYPE datos_basicos AS OBJECT
 (
  nombre_usuario VARCHAR(25),
  correo_electronico VARCHAR(50),
- foto BLOB;
+ foto BLOB,
  STATIC FUNCTION Validar_Nombre(nombre VARCHAR) RETURN VARCHAR,
  STATIC FUNCTION Validar_Correo(correo VARCHAR) RETURN VARCHAR
 );
@@ -82,7 +82,8 @@ id_aliado NUMBER NOT NULL,
 sector CHAR NOT NULL,
 datos datos_basicos,
 CONSTRAINT PK_prod PRIMARY KEY(id_aliado),
-CONSTRAINT check_sector CHECK(sector in ('A','F'))
+CONSTRAINT check_sector CHECK(sector in ('A','F','R','T'))
+-- A=ALIMENTOS, F=FARMACIA, T=TECNOLOGIA,R=ROPA,
 );
 
 CREATE TABLE proveedor(
