@@ -303,17 +303,4 @@ REFERENCES envio(tracking,id_acuerdo,id_calle,id_mun,id_es,id_usuario_envio),
 CONSTRAINT pk_producto PRIMARY KEY (id_producto,id_aliado)
 );
 
-INSERT INTO usuario VALUES(1,'andrea','alex','mendo','garni',
-datos_basicos(datos_basicos.Validar_Nombre('andreaamg'),
-datos_basicos.Validar_Correo('andrea@gmail.com'))
-);
-
-INSERT INTO proveedor VALUES(
-1,datos_basicos(datos_basicos.Validar_Nombre('BonsaiSushi'),datos_basicos.Validar_Correo('bonsaisushi@gmail.com'))
-);
-
-INSERT INTO valoracion VALUES(1,1,10,
-historico(historico.Validar_fecha('11-11-2020')),
-historico(historico.Validar_fecha2('11-11-2020','11-11-2020')));
-
 
