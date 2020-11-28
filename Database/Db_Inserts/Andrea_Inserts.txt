@@ -1,0 +1,181 @@
+-- INSERTS
+--ESTADOS,MUNICIOPIOS Y CALLES
+--Amazonas	
+
+    1)Municipio Atures.
+    2) Municipio Alto Orinoco.
+    3) Municipio Atabapo.
+    4) Municipio Autana.
+    5) Municipio Manapiare.
+    6) Municipio Maroa.
+
+--Anzoategui
+
+    1 Anaco
+    2 Aragua
+    3 Fernado PeÃ±alver
+    4 Francisco del Carmen Carvajal
+    5 Francisco de Miranda
+    6 Guanta
+
+--Apure
+
+    1) Municipio San Fernando.
+    2) Municipio Achaguas.
+    3) Municipio Biruaca.
+    4) Municipio MuÃ±oz.
+    5) Municipio PÃ¡ez.
+    6) Municipio Pedro Camejo.
+
+--Aragua
+
+    1) Municipio Girardot.
+    2) Municipio BolÃ­var.
+    3) Municipio Camatagua.
+    4) Municipio Francisco Linares AlcÃ¡ntara.
+    5) Municipio JosÃ© Ãngel Lamas.
+    6) Municipio JosÃ© FÃ©lix Ribas.
+
+--Barinas
+
+    1) Municipio Barinas
+    2) Municipio Alberto Arvelo Torrealba
+    3) Municipio AndrÃ©s Eloy Blanco
+    4) Municipio Antonio JosÃ© de Sucre
+    5) Municipio Arismendi
+    6) Municipio BolÃ­var 
+
+--BolÃ­var
+
+    1) Municipio Heres.
+    2) Municipio Angostura.
+    3) Municipio CaronÃ­
+    4) Municipio CedeÃ±o.
+    5) Municipio El Callao.
+    6) Municipio Gran Sabana.
+
+--Carabobo
+
+    1) Municipio Valencia.
+    2) Municipio Bejuma.
+    3) Municipio Carlos Arvelo.
+    4) Municipio Diego Ibarra.
+    5) Municipio Guacara.
+    6) Municipio Juan JosÃ© Mora.
+
+--Cojedes.
+
+    1) Municipio Ezequiel Zamora.
+    2) Municipio AnzoÃ¡tegui.
+    3) Municipio Girardot.
+    4) Municipio Lima Blanco.
+    5) Municipio Pao de San Juan Bautista.
+    6) Municipio Ricaurte.
+
+
+-- ALIADOS COMERCIALES
+
+    1)CHURRO MANIA--A
+
+        CRISPYMANIA
+            US $5
+        TWIST MANIA
+            US $4
+        CHURROICECREAM
+            US $5
+        CHURROBITE
+            US $4
+
+    2)KFC--A
+        BIGBOX MEAL DEL CORONEL
+            US $ 7
+        PARTE Y COMPARTE 5PZ
+            US $8
+        PARTE Y COMPARTE HAMBURGUESA
+            US $8
+        BIGBOX MEAL RECARGADO
+            US $8
+
+
+    3)MAXI DONAS--A
+
+        DONAS RELLENAS
+            US $2
+        ROSCA PREMIUM
+            US $3
+        DONAS PREMIUM
+            US $3
+        MINI DONAS 
+            US $1
+
+
+
+    4)DECOFRUTA--A
+
+        DECOBOMBON FRESA
+            US $18
+        DECOPINK
+            US $35
+        DECOAMOR
+            US $44
+        DECOAMISTAD
+            US $28
+
+    5)FRESH FISH--A
+
+
+
+    6)BALU --R
+
+
+
+    7)XINFONI --R
+
+
+
+    8)AISHOP --R
+
+
+
+    9)VESTIMENTA --R
+
+
+
+    10)TGI FRIDAYS
+
+        JACK DANIELS WINGS
+            US $6
+        BLT BURGER CON PAPAS FRITAS
+            US $12
+        SESAME JACK CHICKEN STRIPS
+            US $6
+        ULTIMATE JD BURGER CON PAPAS FRITAS
+            US $17
+        
+
+
+
+    11)ISTORE --T
+
+
+
+    12)KABUKI SUSHI SALAD
+
+        SPICE TUNA
+            US $ 7
+        EBI VULCANO
+            US $ 10
+        KOKO ROLL DE SALMON
+            US $ 13
+        CHAKY FRY TEMPURIZADO
+            US $ 13
+
+    13)FARMATODO --F
+
+
+
+    14)FARMACIAS SAAS -F
+
+
+
+    15)LOCATEL --F
