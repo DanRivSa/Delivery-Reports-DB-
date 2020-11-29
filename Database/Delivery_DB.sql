@@ -245,6 +245,7 @@ CREATE TABLE unidad(
  cod_estado INT NOT NULL,
  tipo_unidad VARCHAR2(15) NOT NULL,
  estado_unidad CHAR NOT NULL,
+ velocidad_promedio NUMBER NOT NULL,
  coordenadas_actuales datos_lugar,
  CONSTRAINT CHK_uni_tipo CHECK(tipo_unidad in ('moto','camioneta','bicicleta')),
  CONSTRAINT CHK_uni_estao CHECK(estado_unidad in ('v','r')), 
