@@ -245,7 +245,7 @@ CREATE TABLE unidad(
  cod_estado INT NOT NULL,
  tipo_unidad VARCHAR2(15) NOT NULL,
  estado_unidad CHAR NOT NULL,
- coordenadas_actuales datos_lugar;
+ coordenadas_actuales datos_lugar,
  CONSTRAINT CHK_uni_tipo CHECK(tipo_unidad in ('moto','camioneta','bicicleta')),
  CONSTRAINT CHK_uni_estao CHECK(estado_unidad in ('v','r')), 
 -- r=reparacion, v=vigente
@@ -298,10 +298,11 @@ id_lugar_ac INT NOT NULL,
 id_acuerdo INT NOT NULL,
 cod_estado INT NOT NULL,
 id_prov INT NOT NULL,
+id_aliado INT NOT NULL,
 id_servicio INT NOT NULL,
 CONSTRAINT fk_lugar_estado FOREIGN KEY (cod_estado) REFERENCES estado(codigo_estado),
-CONSTRAINT fk_lugar_acuerdo FOREIGN KEY (id_acuerdo,id_prov,id_servicio) REFERENCES acuerdo_servicio(id_acuerdo,id_serv,id_prov_serv),
-CONSTRAINT PK_lugar_acuerdo PRIMARY KEY (id_lugar_ac,id_acuerdo,id_prov,id_servicio,cod_estado)
+CONSTRAINT fk_lugar_acuerdo FOREIGN KEY (id_acuerdo,id_prov,id_servicio,id_aliado) REFERENCES acuerdo_servicio(id_acuerdo,id_serv,id_prov_serv,id_aliado),
+CONSTRAINT PK_lugar_acuerdo PRIMARY KEY (id_lugar_ac,id_acuerdo,id_prov,id_aliado,cod_estado)
 );
 
 CREATE SEQUENCE per_seq_envio START WITH 1;
@@ -315,12 +316,12 @@ id_acuerdo INT NOT NULL,
 id_prov INT NOT NULL,
 id_aliado INT NOT NULL,
 id_serv INT NOT NULL,
-punto de referencia VARCHAR2(60),
+punto_de_referencia VARCHAR2(30),
 fechas historico,
 CONSTRAINT fk_acuerdo FOREIGN KEY (id_acuerdo,id_prov,id_serv,id_aliado) REFERENCES acuerdo_servicio(id_acuerdo,id_serv,id_prov_serv,id_aliado),
 CONSTRAINT fk_lugar_envio FOREIGN KEY (id_dir,id_usuario_dir) REFERENCES direccion(id_direccion,id_usuario_direccion),
 CONSTRAINT fk_usuario_envio FOREIGN KEY (id_usuario_envio) REFERENCES usuario(id_usuario),
-CONSTRAINT pk_envio PRIMARY KEY (tracking,id_acuerdo,id_usuario_envio,id_direccion)
+CONSTRAINT pk_envio PRIMARY KEY (tracking,id_acuerdo,id_usuario_envio,id_dir)
 );
 
 CREATE TABLE producto(
@@ -347,4 +348,4 @@ CREATE TABLE producto_envio
     CONSTRAINT fk_producto_p_s FOREIGN KEY (id_producto,id_al_com) REFERENCES producto(id_producto,id_aliado),
     CONSTRAINT fk_productos_de_envio FOREIGN KEY (tracking,id_acuerdo,id_usuario_envio,id_dir) REFERENCES envio (tracking,id_acuerdo,id_usuario_envio,id_dir),
     CONSTRAINT pk_p_s PRIMARY KEY(id_p_s,id_producto,id_al_com,tracking,id_acuerdo,id_usuario_envio,id_dir)
-)
+);
