@@ -142,10 +142,10 @@ CREATE SEQUENCE per_seq_valoracion START WITH 1;
 
 CREATE TABLE valoracion(
 id_valoracion INT DEFAULT per_seq_valoracion.NEXTVAL,
-id_prov NUMBER NOT NULL,
+id_prov INT NOT NULL,
 id_usuario_val INT NOT NULL,
 puntaje INT NOT NULL,
-fechas historico,
+fecha historico,
 CONSTRAINT fk_val_prov FOREIGN KEY (id_prov) REFERENCES proveedor(id_proveedor),
 CONSTRAINT fk_val_usuario FOREIGN KEY (id_usuario_val) REFERENCES usuario(id_usuario),
 CONSTRAINT PK_val PRIMARY KEY(id_valoracion,id_prov,id_usuario_val)
@@ -159,7 +159,6 @@ CREATE TABLE registro(
 id_registro INT DEFAULT per_seq_registro.NEXTVAL,
 id_prov INT NOT NULL,
 id_usuario_reg INT NOT NULL,
-puntaje INT NOT NULL,
 fecha historico,
 CONSTRAINT fk_reg_prov FOREIGN KEY (id_prov) REFERENCES proveedor(id_proveedor),
 CONSTRAINT fk_reg_usuario FOREIGN KEY (id_usuario_reg) REFERENCES usuario(id_usuario),
@@ -177,7 +176,7 @@ CONSTRAINT pk_estado PRIMARY KEY (codigo_estado)
 CREATE TABLE municipio (
 codigo_municipio INT NOT NULL,
 codigo_estado INT NOT NULL,
-nombre Varchar(20) Unique NOT NULL,
+nombre Varchar(20) UNIQUE NOT NULL,
 CONSTRAINT fk_estado FOREIGN KEY (codigo_estado) REFERENCES estado (codigo_estado),
 CONSTRAINT pk_municipio PRIMARY KEY (codigo_municipio,codigo_estado)
 );
@@ -186,7 +185,7 @@ CREATE TABLE calle(
 c_calle INT NOT NULL,
 c_mun INT NOT NULL,
 c_es INT NOT NULL,
-nombre VARCHAR(70) UNIQUE NOT NULL,
+nombre VARCHAR(70) NOT NULL,
 CONSTRAINT fk_calle FOREIGN KEY (c_es,c_mun) REFERENCES
 municipio(codigo_estado,codigo_municipio),
 CONSTRAINT pk_calle PRIMARY KEY (c_calle,c_mun,c_es)
@@ -215,8 +214,8 @@ cod_es INT NOT NULL,
 ubi_sucursal datos_lugar,
 CONSTRAINT fk_calle_sucursal FOREIGN KEY (cod_calle,cod_mun,cod_es) REFERENCES
 calle(c_calle,c_mun,c_es),
-CONSTRAINT fk_prov_sucursa FOREIGN KEY (id_aliado) REFERENCES aliado_comercial(id_aliado),
-CONSTRAINT pk_sucursa PRIMARY KEY (id_sucursal,id_aliado,cod_calle,cod_mun,cod_es)
+CONSTRAINT fk_al_sucursal FOREIGN KEY (id_aliado) REFERENCES aliado_comercial(id_aliado),
+CONSTRAINT pk_sucursal PRIMARY KEY (id_sucursal,id_aliado,cod_calle,cod_mun,cod_es)
 );
 
 
@@ -246,6 +245,7 @@ CREATE TABLE unidad(
  cod_estado INT NOT NULL,
  tipo_unidad VARCHAR2(15) NOT NULL,
  estado_unidad CHAR NOT NULL,
+ coordenadas_actuales datos_lugar;
  CONSTRAINT CHK_uni_tipo CHECK(tipo_unidad in ('moto','camioneta','bicicleta')),
  CONSTRAINT CHK_uni_estao CHECK(estado_unidad in ('v','r')), 
 -- r=reparacion, v=vigente
@@ -257,14 +257,20 @@ CREATE SEQUENCE per_seq_suc_asig START WITH 1;
 
 CREATE TABLE sucursal_asignada(
  id_sucasig INT NOT NULL,
- id_suc INT NOT NULL,
- id_unid INT NOT NULL,
  id_ali INT NOT NULL,
- cod_calle INT NOT NULL,
- cod_mun INT NOT NULL,
- cod_es INT NOT NULL,
- CONSTRAINT fk_suc_asig FOREIGN KEY (id_suc,id_ali,cod_calle,cod_mun,cod_es) REFERENCES sucursal(id_sucursal,id_aliado,cod_calle,cod_mun,cod_es),
- CONSTRAINT pk_suc_asig PRIMARY KEY (id_sucasig,id_suc,id_ali)
+ id_suc INT NOT NULL,
+ id_unidad INT NOT NULL,
+ id_sede INT NOT NULL,
+ id_prov INT NOT NULL,
+ est_sede INT NOT NULL,
+ mun_sede INT NOT NULL,
+ cal_sede INT NOT NULL,
+ est_suc INT NOT NULL,
+ mun_suc INT NOT NULL,
+ cal_suc INT NOT NULL,
+ CONSTRAINT fk_suc_asig_suc FOREIGN KEY (id_suc,id_ali,cal_suc,mun_suc,est_suc) REFERENCES sucursal(id_sucursal,id_aliado,cod_calle,cod_mun,cod_es),
+ CONSTRAINT fk_suc_asig_un FOREIGN KEY (id_unidad,id_sede,id_prov,cal_sede,mun_sede,est_sede) REFERENCES unidad (id_unidad,id_sede,id_prov,cod_calle,cod_municipio,cod_estado),
+ CONSTRAINT pk_suc_asig PRIMARY KEY (id_sucasig,id_suc,id_ali,cal_suc,mun_suc,est_suc,id_unidad,id_sede,id_prov,cal_sede,mun_sede,est_sede)
 );
 
 CREATE TABLE servicio(
@@ -283,9 +289,11 @@ tiempo_calculo INT NOT NULL,
 precio_as INT NOT NULL,
 id_prov_serv INT NOT NULL,
 id_serv INT NOT NULL,
+id_aliado INT NOT NULL,
 fechas historico,
+CONSTRAINT fk_acuerdo_serv_al FOREIGN KEY (id_aliado) REFERENCES aliado_comercial (id_aliado),
 CONSTRAINT fk_acuerdo_serv FOREIGN KEY (id_serv,id_prov_serv) REFERENCES servicio(id_servicio,id_prov),
-CONSTRAINT PK_acuerdo PRIMARY KEY (id_acuerdo,id_serv,id_prov_serv)
+CONSTRAINT PK_acuerdo PRIMARY KEY (id_acuerdo,id_serv,id_prov_serv,id_aliado)
 );
 
 CREATE TABLE lugar_acuerdo(
@@ -296,7 +304,7 @@ id_prov INT NOT NULL,
 id_servicio INT NOT NULL,
 CONSTRAINT fk_lugar_estado FOREIGN KEY (cod_estado) REFERENCES estado(codigo_estado),
 CONSTRAINT fk_lugar_acuerdo FOREIGN KEY (id_acuerdo,id_prov,id_servicio) REFERENCES acuerdo_servicio(id_acuerdo,id_serv,id_prov_serv),
-CONSTRAINT PK_lugar_acuerdo PRIMARY KEY (id_acuerdo,id_prov,id_servicio,cod_estado)
+CONSTRAINT PK_lugar_acuerdo PRIMARY KEY (id_lugar_ac,id_acuerdo,id_prov,id_servicio,cod_estado)
 );
 
 CREATE SEQUENCE per_seq_envio START WITH 1;
@@ -306,18 +314,17 @@ tracking INT DEFAULT per_seq_envio.NEXTVAL,
 id_usuario_envio INT NOT NULL,
 id_acuerdo INT NOT NULL,
 id_prov INT NOT NULL,
+id_aliado INT NOT NULL,
 id_serv INT NOT NULL,
 id_calle INT NOT NULL,
 id_mun INT NOT NULL,
 id_es INT NOT NULL,
-s_calle INT NOT NULL,
-s_mun INT NOT NULL,
-s_es INT NOT NULL,
+punto de referencia VARCHAR2(60),
 fechas historico,
-CONSTRAINT fk_acuerdo FOREIGN KEY (id_acuerdo,id_prov,id_serv) REFERENCES acuerdo_servicio(id_acuerdo,id_serv,id_prov_serv),
+CONSTRAINT fk_acuerdo FOREIGN KEY (id_acuerdo,id_prov,id_serv,id_aliado) REFERENCES acuerdo_servicio(id_acuerdo,id_serv,id_prov_serv,id_aliado),
 CONSTRAINT fk_lugar_envio FOREIGN KEY (id_calle,id_mun,id_es) REFERENCES calle(c_calle,c_mun,c_es),
 CONSTRAINT fk_usuario_envio FOREIGN KEY (id_usuario_envio) REFERENCES usuario(id_usuario),
-CONSTRAINT pk_envio PRIMARY KEY (tracking,id_acuerdo,id_calle,id_mun,id_es,id_usuario_envio)
+CONSTRAINT pk_envio PRIMARY KEY (tracking,id_acuerdo,id_prov,id_aliado,id_serv,id_calle,id_mun,id_es,id_usuario_envio)
 );
 
 CREATE TABLE producto(
@@ -325,16 +332,28 @@ id_producto INT NOT NULL,
 id_aliado INT NOT NULL,
 precio_unitario INT NOT NULL,
 nombre_prod  VARCHAR(20),
-tracking INT NOT NULL,
-id_acuerdo INT NOT NULL,
-id_calle INT NOT NULL,
-id_mun INT NOT NULL,
-id_es INT NOT NULL,
-id_usuario_envio INT NOT NULL,
 CONSTRAINT fk_al_producto FOREIGN KEY (id_aliado) REFERENCES aliado_comercial(id_aliado),
-CONSTRAINT fk_envio_producto FOREIGN KEY (tracking,id_acuerdo,id_calle,id_mun,id_es,id_usuario_envio) 
-REFERENCES envio(tracking,id_acuerdo,id_calle,id_mun,id_es,id_usuario_envio),
 CONSTRAINT pk_producto PRIMARY KEY (id_producto,id_aliado)
 );
 
-
+CREATE TABLE producto_envio 
+(
+    id_p_s INT NOT NULL,
+    --PK producto
+    id_producto INT NOT NULL,
+    id_al_com INT NOT NULL,
+    --PK envio
+    tracking INT NOT NULL,
+    id_acuerdo INT NOT NULL,
+    id_prov INT NOT NULL,
+    id_serv INT NOT NULL,
+    id_aliado INT NOT NULL,
+    id_calle INT NOT NULL, 
+    id_mun INT NOT NULL,
+    id_es INT NOT NULL,
+    id_usuario_envio INT NOT NULL,
+    --constraints
+    CONSTRAINT fk_producto_p_s FOREIGN KEY (id_producto,id_al_com) REFERENCES producto(id_producto,id_aliado),
+    CONSTRAINT fk_productos_de_envio FOREIGN KEY (tracking,id_acuerdo,id_prov,id_aliado,id_serv,id_calle,id_mun,id_es,id_usuario_envio) REFERENCES envio (tracking,id_acuerdo,id_prov,id_aliado,id_serv,id_calle,id_mun,id_es,id_usuario_envio),
+    CONSTRAINT pk_p_s PRIMARY KEY(id_p_s,id_producto,tracking,id_acuerdo,id_prov,id_aliado,id_serv,id_calle,id_mun,id_es,id_usuario_envio)
+)
