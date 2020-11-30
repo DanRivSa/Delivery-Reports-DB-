@@ -1,0 +1,205 @@
+--INSERTS
+--USUARIO
+
+--GRANT READ, WRITE ON DIRECTORY OBJETOS_LOB TO SYSTEM; OJO CHECAR CON QUE USUARIO SE ESTA TRABAJANDO, SI ES SYTEM, SYS O ER
+
+DECLARE
+    V_TEMP BLOB;
+    V_BFILE BFILE;
+    V_NOMBRE_FOTO VARCHAR (20);
+BEGIN
+    Insert into usuario values (1,'Manuel','Alejandro','Correia','Buitrago',datos_basicos(datos_basicos.Validar_nombre('Alejandro'),datos_basicos.Validar_correo('alejandroc0701@gmail.com')), EMPTY_BLOB())RETURNING foto INTO V_TEMP ;
+    V_NOMBRE_FOTO := '1.JPG';
+    V_BFILE := BFILENAME('OBJETOS_LOB',V_NOMBRE_FOTO);
+    DBMS_LOB.OPEN(V_BFILE, DBMS_LOB.LOB_READONLY);
+    DBMS_LOB.LOADFROMFILE (V_TEMP, V_BFILE, dbms_lob.getlength(V_BFILE));
+    DBMS_LOB.CLOSE (V_BFILE);
+END;
+
+
+DECLARE
+    V_TEMP BLOB;
+    V_BFILE BFILE;
+    V_NOMBRE_FOTO VARCHAR (20);
+BEGIN
+    Insert into usuario values (2,'Daniel','Antonio','Rivero','Perez',datos_basicos(datos_basicos.Validar_nombre('Daniel'),datos_basicos.Validar_correo('drivero@gmail.com')), EMPTY_BLOB())RETURNING foto INTO V_TEMP ;
+    V_NOMBRE_FOTO := '2.JPG';
+    V_BFILE := BFILENAME('OBJETOS_LOB',V_NOMBRE_FOTO);
+    DBMS_LOB.OPEN(V_BFILE, DBMS_LOB.LOB_READONLY);
+    DBMS_LOB.LOADFROMFILE (V_TEMP, V_BFILE, dbms_lob.getlength(V_BFILE));
+    DBMS_LOB.CLOSE (V_BFILE);
+END;
+
+
+DECLARE
+    V_TEMP BLOB;
+    V_BFILE BFILE;
+    V_NOMBRE_FOTO VARCHAR (20);
+BEGIN
+    Insert into usuario values (3,'Andrea','Valentina','Mendoza','Ferreira',datos_basicos(datos_basicos.Validar_nombre('Andrea'),datos_basicos.Validar_correo('andremendoza@gmail.com')), EMPTY_BLOB())RETURNING foto INTO V_TEMP ;
+    V_NOMBRE_FOTO := '3.JPG';
+    V_BFILE := BFILENAME('OBJETOS_LOB',V_NOMBRE_FOTO);
+    DBMS_LOB.OPEN(V_BFILE, DBMS_LOB.LOB_READONLY);
+    DBMS_LOB.LOADFROMFILE (V_TEMP, V_BFILE, dbms_lob.getlength(V_BFILE));
+    DBMS_LOB.CLOSE (V_BFILE);
+END;
+
+
+DECLARE
+    V_TEMP BLOB;
+    V_BFILE BFILE;
+    V_NOMBRE_FOTO VARCHAR (20);
+BEGIN
+    Insert into usuario values (4,'Alejandra','Yamileth','Martinez','Rios',datos_basicos(datos_basicos.Validar_nombre('Alejandra'),datos_basicos.Validar_correo('alerios@gmail.com')), EMPTY_BLOB())RETURNING foto INTO V_TEMP ;
+    V_NOMBRE_FOTO := '4.JPG';
+    V_BFILE := BFILENAME('OBJETOS_LOB',V_NOMBRE_FOTO);
+    DBMS_LOB.OPEN(V_BFILE, DBMS_LOB.LOB_READONLY);
+    DBMS_LOB.LOADFROMFILE (V_TEMP, V_BFILE, dbms_lob.getlength(V_BFILE));
+    DBMS_LOB.CLOSE (V_BFILE);
+END;
+
+DECLARE
+    V_TEMP BLOB;
+    V_BFILE BFILE;
+    V_NOMBRE_FOTO VARCHAR (20);
+BEGIN
+    Insert into usuario values (5,'Jullian','Alexandra','Mijares','Azuaje',datos_basicos(datos_basicos.Validar_nombre('Jullian'),datos_basicos.Validar_correo('jama@gmail.com')), EMPTY_BLOB())RETURNING foto INTO V_TEMP ;
+    V_NOMBRE_FOTO := '5.JPG';
+    V_BFILE := BFILENAME('OBJETOS_LOB',V_NOMBRE_FOTO);
+    DBMS_LOB.OPEN(V_BFILE, DBMS_LOB.LOB_READONLY);
+    DBMS_LOB.LOADFROMFILE (V_TEMP, V_BFILE, dbms_lob.getlength(V_BFILE));
+    DBMS_LOB.CLOSE (V_BFILE);
+END;
+
+DECLARE
+    V_TEMP BLOB;
+    V_BFILE BFILE;
+    V_NOMBRE_FOTO VARCHAR (20);
+BEGIN
+    Insert into usuario values (6,'Marco','Alonso','Hernandez','Beltran',datos_basicos(datos_basicos.Validar_nombre('Marco'),datos_basicos.Validar_correo('Marco3939@gmail.com')), EMPTY_BLOB())RETURNING foto INTO V_TEMP ;
+    V_NOMBRE_FOTO := '6.JPG';
+    V_BFILE := BFILENAME('OBJETOS_LOB',V_NOMBRE_FOTO);
+    DBMS_LOB.OPEN(V_BFILE, DBMS_LOB.LOB_READONLY);
+    DBMS_LOB.LOADFROMFILE (V_TEMP, V_BFILE, dbms_lob.getlength(V_BFILE));
+    DBMS_LOB.CLOSE (V_BFILE);
+END;
+
+
+DECLARE
+    V_TEMP BLOB;
+    V_BFILE BFILE;
+    V_NOMBRE_FOTO VARCHAR (20);
+BEGIN
+    Insert into usuario values (7,'Lionel','Andres','Messi','Cuccittini',datos_basicos(datos_basicos.Validar_nombre('Lionel'),datos_basicos.Validar_correo('Messi10@gmail.com')), EMPTY_BLOB())RETURNING foto INTO V_TEMP ;
+    V_NOMBRE_FOTO := '7.JPG';
+    V_BFILE := BFILENAME('OBJETOS_LOB',V_NOMBRE_FOTO);
+    DBMS_LOB.OPEN(V_BFILE, DBMS_LOB.LOB_READONLY);
+    DBMS_LOB.LOADFROMFILE (V_TEMP, V_BFILE, dbms_lob.getlength(V_BFILE));
+    DBMS_LOB.CLOSE (V_BFILE);
+END;
+
+DECLARE
+    V_TEMP BLOB;
+    V_BFILE BFILE;
+    V_NOMBRE_FOTO VARCHAR (20);
+BEGIN
+    Insert into usuario values (8,'Angel','Andres','Manzano','Castro',datos_basicos(datos_basicos.Validar_nombre('Angel'),datos_basicos.Validar_correo('Acastro3949@gmail.com')), EMPTY_BLOB())RETURNING foto INTO V_TEMP ;
+    V_NOMBRE_FOTO := '8.JPG';
+    V_BFILE := BFILENAME('OBJETOS_LOB',V_NOMBRE_FOTO);
+    DBMS_LOB.OPEN(V_BFILE, DBMS_LOB.LOB_READONLY);
+    DBMS_LOB.LOADFROMFILE (V_TEMP, V_BFILE, dbms_lob.getlength(V_BFILE));
+    DBMS_LOB.CLOSE (V_BFILE);
+END;
+
+DECLARE
+    V_TEMP BLOB;
+    V_BFILE BFILE;
+    V_NOMBRE_FOTO VARCHAR (20);
+BEGIN
+    Insert into usuario values (9,'Jeancarlos','Alfonso','Hernandez','Linarez',datos_basicos(datos_basicos.Validar_nombre('Jeancarlos'),datos_basicos.Validar_correo('JLinarez@gmail.com')), EMPTY_BLOB())RETURNING foto INTO V_TEMP ;
+    V_NOMBRE_FOTO := '9.JPG';
+    V_BFILE := BFILENAME('OBJETOS_LOB',V_NOMBRE_FOTO);
+    DBMS_LOB.OPEN(V_BFILE, DBMS_LOB.LOB_READONLY);
+    DBMS_LOB.LOADFROMFILE (V_TEMP, V_BFILE, dbms_lob.getlength(V_BFILE));
+    DBMS_LOB.CLOSE (V_BFILE);
+END;
+
+DECLARE
+    V_TEMP BLOB;
+    V_BFILE BFILE;
+    V_NOMBRE_FOTO VARCHAR (20);
+BEGIN
+    Insert into usuario values (10,'Victoria','Isabella','Varela','Lara',datos_basicos(datos_basicos.Validar_nombre('Victoria'),datos_basicos.Validar_correo('Lavicvarela@gmail.com')), EMPTY_BLOB())RETURNING foto INTO V_TEMP ;
+    V_NOMBRE_FOTO := '10.JPG';
+    V_BFILE := BFILENAME('OBJETOS_LOB',V_NOMBRE_FOTO);
+    DBMS_LOB.OPEN(V_BFILE, DBMS_LOB.LOB_READONLY);
+    DBMS_LOB.LOADFROMFILE (V_TEMP, V_BFILE, dbms_lob.getlength(V_BFILE));
+    DBMS_LOB.CLOSE (V_BFILE);
+END;
+
+
+DECLARE
+    V_TEMP BLOB;
+    V_BFILE BFILE;
+    V_NOMBRE_FOTO VARCHAR (20);
+BEGIN
+    Insert into usuario values (11,'Carla','Alexa','Hernandez','Flores',datos_basicos(datos_basicos.Validar_nombre('Carla'),datos_basicos.Validar_correo('Carlita1225@gmail.com')), EMPTY_BLOB())RETURNING foto INTO V_TEMP ;
+    V_NOMBRE_FOTO := '11.JPG';
+    V_BFILE := BFILENAME('OBJETOS_LOB',V_NOMBRE_FOTO);
+    DBMS_LOB.OPEN(V_BFILE, DBMS_LOB.LOB_READONLY);
+    DBMS_LOB.LOADFROMFILE (V_TEMP, V_BFILE, dbms_lob.getlength(V_BFILE));
+    DBMS_LOB.CLOSE (V_BFILE);
+END;
+
+DECLARE
+    V_TEMP BLOB;
+    V_BFILE BFILE;
+    V_NOMBRE_FOTO VARCHAR (20);
+BEGIN
+    Insert into usuario values (12,'Kimberlis','Andrea','Barrios','Gonzales',datos_basicos(datos_basicos.Validar_nombre('Kimberlis'),datos_basicos.Validar_correo('kimberlis24343@gmail.com')), EMPTY_BLOB())RETURNING foto INTO V_TEMP ;
+    V_NOMBRE_FOTO := '12.JPG';
+    V_BFILE := BFILENAME('OBJETOS_LOB',V_NOMBRE_FOTO);
+    DBMS_LOB.OPEN(V_BFILE, DBMS_LOB.LOB_READONLY);
+    DBMS_LOB.LOADFROMFILE (V_TEMP, V_BFILE, dbms_lob.getlength(V_BFILE));
+    DBMS_LOB.CLOSE (V_BFILE);
+END;
+
+DECLARE
+    V_TEMP BLOB;
+    V_BFILE BFILE;
+    V_NOMBRE_FOTO VARCHAR (20);
+BEGIN
+    Insert into usuario values (13,'Paola','Alejandra','Aponte','Ollavis',datos_basicos(datos_basicos.Validar_nombre('Paola'),datos_basicos.Validar_correo('Pao_ollavis@hotmail.com')), EMPTY_BLOB())RETURNING foto INTO V_TEMP ;
+    V_NOMBRE_FOTO := '13.JPG';
+    V_BFILE := BFILENAME('OBJETOS_LOB',V_NOMBRE_FOTO);
+    DBMS_LOB.OPEN(V_BFILE, DBMS_LOB.LOB_READONLY);
+    DBMS_LOB.LOADFROMFILE (V_TEMP, V_BFILE, dbms_lob.getlength(V_BFILE));
+    DBMS_LOB.CLOSE (V_BFILE);
+END;
+
+DECLARE
+    V_TEMP BLOB;
+    V_BFILE BFILE;
+    V_NOMBRE_FOTO VARCHAR (20);
+BEGIN
+    Insert into usuario values (14,'Eraine','Esperanza','Herrera','Campos',datos_basicos(datos_basicos.Validar_nombre('Eraine'),datos_basicos.Validar_correo('era_herrera@gmail.com')), EMPTY_BLOB())RETURNING foto INTO V_TEMP ;
+    V_NOMBRE_FOTO := '14.JPG';
+    V_BFILE := BFILENAME('OBJETOS_LOB',V_NOMBRE_FOTO);
+    DBMS_LOB.OPEN(V_BFILE, DBMS_LOB.LOB_READONLY);
+    DBMS_LOB.LOADFROMFILE (V_TEMP, V_BFILE, dbms_lob.getlength(V_BFILE));
+    DBMS_LOB.CLOSE (V_BFILE);
+END;
+
+DECLARE
+    V_TEMP BLOB;
+    V_BFILE BFILE;
+    V_NOMBRE_FOTO VARCHAR (20);
+BEGIN
+    Insert into usuario values (15,'Luis','Nicolas','Rodriguez','Mayora',datos_basicos(datos_basicos.Validar_nombre('Luis'),datos_basicos.Validar_correo('lshadow@gmail.com')), EMPTY_BLOB())RETURNING foto INTO V_TEMP ;
+    V_NOMBRE_FOTO := '15.JPG';
+    V_BFILE := BFILENAME('OBJETOS_LOB',V_NOMBRE_FOTO);
+    DBMS_LOB.OPEN(V_BFILE, DBMS_LOB.LOB_READONLY);
+    DBMS_LOB.LOADFROMFILE (V_TEMP, V_BFILE, dbms_lob.getlength(V_BFILE));
+    DBMS_LOB.CLOSE (V_BFILE);
+END;
+
