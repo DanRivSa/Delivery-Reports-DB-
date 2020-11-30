@@ -122,7 +122,12 @@
             US $28
 
     5)FRESH FISH--A
-
+        Hamburguesa triple
+            US $ 7
+        Bonadeo
+            US $ 14
+        Analitiroll
+            US $ 9
 
 
     6)BALU --R
@@ -159,7 +164,17 @@
 
 
 
-    12)KABUKI SUSHI SALAD
+    12)FARMATODO --F
+
+
+
+    13)FARMACIAS SAAS -F
+
+
+
+    14)LOCATEL --F
+
+    15)KABUKI SUSHI SALAD
 
         SPICE TUNA
             US $ 7
@@ -169,14 +184,3 @@
             US $ 13
         CHAKY FRY TEMPURIZADO
             US $ 13
-
-    13)FARMATODO --F
-
-
-
-    14)FARMACIAS SAAS -F
-
-
-
-    15)LOCATEL --F
-
