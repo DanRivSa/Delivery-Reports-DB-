@@ -8,7 +8,6 @@ CREATE OR REPLACE TYPE datos_basicos AS OBJECT
 (
  nombre_usuario VARCHAR(25),
  correo_electronico VARCHAR(50),
- foto BLOB,
  STATIC FUNCTION Validar_Nombre(nombre VARCHAR) RETURN VARCHAR,
  STATIC FUNCTION Validar_Correo(correo VARCHAR) RETURN VARCHAR
 );
@@ -113,6 +112,7 @@ END;
 CREATE TABLE aliado_comercial(
 id_aliado NUMBER NOT NULL,
 sector CHAR NOT NULL,
+foto BLOB,
 datos datos_basicos,
 CONSTRAINT PK_prod PRIMARY KEY(id_aliado),
 CONSTRAINT check_sector CHECK(sector in ('A','F','R','T'))
@@ -121,6 +121,7 @@ CONSTRAINT check_sector CHECK(sector in ('A','F','R','T'))
 
 CREATE TABLE proveedor(
 id_proveedor NUMBER NOT NULL,
+foto BLOB,
 datos_prov datos_basicos,
 CONSTRAINT PK_prov PRIMARY KEY(id_proveedor)
 );
@@ -133,6 +134,7 @@ primer_apellido VARCHAR(20) NOT NULL,
 segundo_nombre VARCHAR(20) ,
 segundo_apellido VARCHAR(20) ,
 datos datos_basicos,
+foto BLOB,
 CONSTRAINT PK_usuario PRIMARY KEY(id_usuario)
 );
 
