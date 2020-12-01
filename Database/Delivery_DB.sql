@@ -1,4 +1,5 @@
 CREATE OR REPLACE DIRECTORY OBJETOS_LOB AS 'C:\imagenes\';
+CREATE OR REPLACE DIRECTORY OBJETOS_ALI AS 'C:\imagenes\aliados\';
 
 --GRANT READ, WRITE ON DIRECTORY OBJETOS_LOB TO ER;
 
@@ -114,10 +115,14 @@ id_aliado NUMBER NOT NULL,
 sector CHAR NOT NULL,
 foto BLOB,
 datos datos_basicos,
+nombre varchar(30),
 CONSTRAINT PK_prod PRIMARY KEY(id_aliado),
 CONSTRAINT check_sector CHECK(sector in ('A','F','R','T'))
 -- A=ALIMENTOS, F=FARMACIA, T=TECNOLOGIA,R=ROPA,
 );
+
+-- SI YA CREARON LA TABLA
+-- ALTER TABLE aliado_comercial ADD nombre varchar(30);
 
 CREATE TABLE proveedor(
 id_proveedor NUMBER NOT NULL,
