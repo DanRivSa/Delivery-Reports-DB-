@@ -115,6 +115,7 @@ id_aliado NUMBER NOT NULL,
 sector CHAR NOT NULL,
 foto BLOB,
 datos datos_basicos,
+--AGREGUE CAMPO NOMBRE 
 nombre varchar(30),
 CONSTRAINT PK_prod PRIMARY KEY(id_aliado),
 CONSTRAINT check_sector CHECK(sector in ('A','F','R','T'))
