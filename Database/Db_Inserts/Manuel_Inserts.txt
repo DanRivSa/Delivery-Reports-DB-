@@ -1,4 +1,5 @@
 --INSERTS
+
 --USUARIO
 
 --GRANT READ, WRITE ON DIRECTORY OBJETOS_LOB TO SYSTEM; OJO CHECAR CON QUE USUARIO SE ESTA TRABAJANDO, SI ES SYTEM, SYS O ER
@@ -203,3 +204,76 @@ BEGIN
     DBMS_LOB.CLOSE (V_BFILE);
 END;
 
+
+--ESTADOS
+
+INSERT INTO estado(codigo_estado,nombre) VALUES (17,'Portuguesa');
+INSERT INTO estado(codigo_estado,nombre) VALUES (18,'Sucre');
+INSERT INTO estado(codigo_estado,nombre) VALUES (19,'Tachira');
+INSERT INTO estado(codigo_estado,nombre) VALUES (20,'Trujillo');
+INSERT INTO estado(codigo_estado,nombre) VALUES (21,'La Guaira');
+INSERT INTO estado(codigo_estado,nombre) VALUES (22,'Yaracuy');
+INSERT INTO estado(codigo_estado,nombre) VALUES (23,'Zulia');
+INSERT INTO estado(codigo_estado,nombre) VALUES (24,'Distrito Capital');
+
+--MUNICIPIOS
+
+INSERT INTO municipio(codigo_municipio,codigo_estado,nombre) 
+VALUES (33,17,'Araure');
+INSERT INTO municipio(codigo_municipio,codigo_estado,nombre) 
+VALUES (34,17,'Guanare');
+INSERT INTO municipio(codigo_municipio,codigo_estado,nombre) 
+VALUES (35,18,'Bolivar');
+INSERT INTO municipio(codigo_municipio,codigo_estado,nombre) 
+VALUES (36,18,'Arismendi');
+INSERT INTO municipio(codigo_municipio,codigo_estado,nombre) 
+VALUES (37,19,'Independencia');
+INSERT INTO municipio(codigo_municipio,codigo_estado,nombre) 
+VALUES (38,19,'Panamericano');
+INSERT INTO municipio(codigo_municipio,codigo_estado,nombre) 
+VALUES (39,20,'Bocono');
+INSERT INTO municipio(codigo_municipio,codigo_estado,nombre) 
+VALUES (40,20,'La Ceiba');
+INSERT INTO municipio(codigo_municipio,codigo_estado,nombre) 
+VALUES (41,21,'Vargas');
+INSERT INTO municipio(codigo_municipio,codigo_estado,nombre) 
+VALUES (42,22,'Nirgua');
+INSERT INTO municipio(codigo_municipio,codigo_estado,nombre) 
+VALUES (43,22,'San Felipe');
+INSERT INTO municipio(codigo_municipio,codigo_estado,nombre) 
+VALUES (44,23,'Maracaibo');
+INSERT INTO municipio(codigo_municipio,codigo_estado,nombre) 
+VALUES (45,23,'Guajira');
+INSERT INTO municipio(codigo_municipio,codigo_estado,nombre) 
+VALUES (46,24,'Libertador');
+
+--CALLES
+
+INSERT INTO calle(c_calle,c_mun,c_es,nombre) 
+VALUES (33,33,17,'Vencedores de Araure');
+INSERT INTO calle(c_calle,c_mun,c_es,nombre) 
+VALUES (34,34,17,'Calle 17');
+INSERT INTO calle(c_calle,c_mun,c_es,nombre) 
+VALUES (35,35,18,'Mariguitar');
+INSERT INTO calle(c_calle,c_mun,c_es,nombre) 
+VALUES (36,36,18,'Rio Caribe');
+INSERT INTO calle(c_calle,c_mun,c_es,nombre) 
+VALUES (37,37,19,'Capacho');
+INSERT INTO calle(c_calle,c_mun,c_es,nombre) 
+VALUES (38,38,19,'Coloncito');
+INSERT INTO calle(c_calle,c_mun,c_es,nombre) 
+VALUES (39,39,20,'Avenida 23');
+INSERT INTO calle(c_calle,c_mun,c_es,nombre) 
+VALUES (40,40,20,'Santa Apolonia');
+INSERT INTO calle(c_calle,c_mun,c_es,nombre) 
+VALUES (41,41,21,'Macuto');
+INSERT INTO calle(c_calle,c_mun,c_es,nombre) 
+VALUES (42,42,22,'Nirgua');
+INSERT INTO calle(c_calle,c_mun,c_es,nombre) 
+VALUES (43,43,22,'Avenida Libertador');
+INSERT INTO calle(c_calle,c_mun,c_es,nombre) 
+VALUES (44,44,23,'Santa Lucia');
+INSERT INTO calle(c_calle,c_mun,c_es,nombre) 
+VALUES (45,45,23,'La Rita');
+INSERT INTO calle(c_calle,c_mun,c_es,nombre) 
+VALUES (46,46,24,'Avenida Universidad');
