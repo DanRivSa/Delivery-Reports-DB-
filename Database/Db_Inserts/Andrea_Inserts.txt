@@ -187,4 +187,33 @@
 
 
 
+--  1)CHURRO MANIA--A
+
+--  2)KFC--A
+
+--  3)MAXI DONAS--A
+
+--  4)DECOFRUTA--A
+
+--  5)FRESH FISH--A
+
+--  6)BALU --R
+
+--  7)XINFONI --R
+
+--  8)AISHOP --R
+
+--  9)VESTIMENTA --R
+
+--  10)TGI FRIDAYS
+
+--  11)ISTORE --T
+
+--  12)FARMATODO --F
+
+--  13)FARMACIAS SAAS -F
+
+--  14)LOCATEL --F
+
+--  15)KABUKI SUSHI SALAD
 
