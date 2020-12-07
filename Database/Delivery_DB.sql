@@ -1,6 +1,6 @@
 CREATE OR REPLACE DIRECTORY OBJETOS_LOB AS 'C:\imagenes\';
 CREATE OR REPLACE DIRECTORY OBJETOS_ALI AS 'C:\imagenes\aliados\';
-CREATE OR REPLACE DIRECTORY OBJETOS_PROV AS 'C\imagenes\proveedores\';
+CREATE OR REPLACE DIRECTORY OBJETOS_PROV AS 'C:\imagenes\proveedores\';
 
 --GRANT READ, WRITE ON DIRECTORY OBJETOS_LOB TO ER;
 
@@ -24,7 +24,7 @@ CREATE TYPE historico AS OBJECT
 
 CREATE TYPE datos_lugar AS OBJECT(
 latitud NUMBER,
-longitud NUMBER,
+longitud NUMBER
 );
 
 --FUNCTIONS TDA
@@ -48,9 +48,9 @@ IS
             ELSE
                 RAISE_APPLICATION_ERROR(-20001,'Correo invalido.Ingrese un correo con un formato valido');
             END IF;
-        END;
     END;
 END;
+
 
 CREATE OR REPLACE TYPE BODY historico 
 IS

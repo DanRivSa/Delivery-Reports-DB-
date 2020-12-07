@@ -20,7 +20,7 @@ VALUES (20,10,'Tovar');
 INSERT INTO municipio(codigo_municipio,codigo_estado,nombre) 
 VALUES (21,11,'Tubores');
 INSERT INTO municipio(codigo_municipio,codigo_estado,nombre) 
-VALUES (22,11,'Arismendi');
+VALUES (22,11,'Arismendi2');
 INSERT INTO municipio(codigo_municipio,codigo_estado,nombre) 
 VALUES (23,12,'Chacao');
 INSERT INTO municipio(codigo_municipio,codigo_estado,nombre) 
@@ -188,27 +188,13 @@ BEGIN
     DBMS_LOB.CLOSE (V_BFILE);
 END; 
 
---9-) Tasty Urban Food
+--10-) Tasty Urban Food
 DECLARE
     V_TEMP BLOB;
     V_BFILE BFILE;
     V_NOMBRE_FOTO VARCHAR (20);
 BEGIN
-    Insert into proveedor values (9,EMPTY_BLOB(), datos_basicos(datos_basicos.Validar_nombre('Tasty'),datos_basicos.Validar_correo('TastyUrbanFoodDeliVE@gmail.com'))) RETURNING foto INTO V_TEMP ;
-    V_NOMBRE_FOTO := '9.PNG';
-    V_BFILE := BFILENAME('OBJETOS_PROV',V_NOMBRE_FOTO);
-    DBMS_LOB.OPEN(V_BFILE, DBMS_LOB.LOB_READONLY);
-    DBMS_LOB.LOADFROMFILE (V_TEMP, V_BFILE, dbms_lob.getlength(V_BFILE));
-    DBMS_LOB.CLOSE (V_BFILE);
-END; 
-
---10-) Dulcear
-DECLARE
-    V_TEMP BLOB;
-    V_BFILE BFILE;
-    V_NOMBRE_FOTO VARCHAR (20);
-BEGIN
-    Insert into proveedor values (10,EMPTY_BLOB(), datos_basicos(datos_basicos.Validar_nombre('Dulcear'),datos_basicos.Validar_correo('DulcearDeli@gmail.com'))) RETURNING foto INTO V_TEMP ;
+    Insert into proveedor values (10,EMPTY_BLOB(), datos_basicos(datos_basicos.Validar_nombre('Tasty'),datos_basicos.Validar_correo('TastyUrbanFoodDeliVE@gmail.com'))) RETURNING foto INTO V_TEMP ;
     V_NOMBRE_FOTO := '10.PNG';
     V_BFILE := BFILENAME('OBJETOS_PROV',V_NOMBRE_FOTO);
     DBMS_LOB.OPEN(V_BFILE, DBMS_LOB.LOB_READONLY);
@@ -216,13 +202,13 @@ BEGIN
     DBMS_LOB.CLOSE (V_BFILE);
 END; 
 
---11-) Yolopido
+--11-) Dulcear
 DECLARE
     V_TEMP BLOB;
     V_BFILE BFILE;
     V_NOMBRE_FOTO VARCHAR (20);
 BEGIN
-    Insert into proveedor values (11,EMPTY_BLOB(), datos_basicos(datos_basicos.Validar_nombre('Yolopido'),datos_basicos.Validar_correo('yolopidodelivery@gmail.com'))) RETURNING foto INTO V_TEMP ;
+    Insert into proveedor values (11,EMPTY_BLOB(), datos_basicos(datos_basicos.Validar_nombre('Dulcear'),datos_basicos.Validar_correo('DulcearDeli@gmail.com'))) RETURNING foto INTO V_TEMP ;
     V_NOMBRE_FOTO := '11.PNG';
     V_BFILE := BFILENAME('OBJETOS_PROV',V_NOMBRE_FOTO);
     DBMS_LOB.OPEN(V_BFILE, DBMS_LOB.LOB_READONLY);
@@ -230,13 +216,13 @@ BEGIN
     DBMS_LOB.CLOSE (V_BFILE);
 END; 
 
---12-) Chops 
+--12-) Yolopido
 DECLARE
     V_TEMP BLOB;
     V_BFILE BFILE;
     V_NOMBRE_FOTO VARCHAR (20);
 BEGIN
-    Insert into proveedor values (12,EMPTY_BLOB(), datos_basicos(datos_basicos.Validar_nombre('Chops'),datos_basicos.Validar_correo('PidePorChops@outlook.com'))) RETURNING foto INTO V_TEMP ;
+    Insert into proveedor values (12,EMPTY_BLOB(), datos_basicos(datos_basicos.Validar_nombre('Yolopido'),datos_basicos.Validar_correo('yolopidodelivery@gmail.com'))) RETURNING foto INTO V_TEMP ;
     V_NOMBRE_FOTO := '12.PNG';
     V_BFILE := BFILENAME('OBJETOS_PROV',V_NOMBRE_FOTO);
     DBMS_LOB.OPEN(V_BFILE, DBMS_LOB.LOB_READONLY);
@@ -244,13 +230,13 @@ BEGIN
     DBMS_LOB.CLOSE (V_BFILE);
 END; 
 
---13-) ego
+--13-) Chops 
 DECLARE
     V_TEMP BLOB;
     V_BFILE BFILE;
     V_NOMBRE_FOTO VARCHAR (20);
 BEGIN
-    Insert into proveedor values (13,EMPTY_BLOB(), datos_basicos(datos_basicos.Validar_nombre('E.go'),datos_basicos.Validar_correo('pideE.go.delivery@gmail.com'))) RETURNING foto INTO V_TEMP ;
+    Insert into proveedor values (13,EMPTY_BLOB(), datos_basicos(datos_basicos.Validar_nombre('Chops'),datos_basicos.Validar_correo('PidePorChops@outlook.com'))) RETURNING foto INTO V_TEMP ;
     V_NOMBRE_FOTO := '13.PNG';
     V_BFILE := BFILENAME('OBJETOS_PROV',V_NOMBRE_FOTO);
     DBMS_LOB.OPEN(V_BFILE, DBMS_LOB.LOB_READONLY);
@@ -258,14 +244,28 @@ BEGIN
     DBMS_LOB.CLOSE (V_BFILE);
 END; 
 
---14-) Alpelo
+--14-) ego
 DECLARE
     V_TEMP BLOB;
     V_BFILE BFILE;
     V_NOMBRE_FOTO VARCHAR (20);
 BEGIN
-    Insert into proveedor values (14,EMPTY_BLOB(), datos_basicos(datos_basicos.Validar_nombre('Alpelo'),datos_basicos.Validar_correo('AlpeloDelivery@gmail.com'))) RETURNING foto INTO V_TEMP ;
+    Insert into proveedor values (14,EMPTY_BLOB(), datos_basicos(datos_basicos.Validar_nombre('Ego'),datos_basicos.Validar_correo('pideE.go.delivery@gmail.com'))) RETURNING foto INTO V_TEMP ;
     V_NOMBRE_FOTO := '14.PNG';
+    V_BFILE := BFILENAME('OBJETOS_PROV',V_NOMBRE_FOTO);
+    DBMS_LOB.OPEN(V_BFILE, DBMS_LOB.LOB_READONLY);
+    DBMS_LOB.LOADFROMFILE (V_TEMP, V_BFILE, dbms_lob.getlength(V_BFILE));
+    DBMS_LOB.CLOSE (V_BFILE);
+END; 
+
+--15-) Alpelo
+DECLARE
+    V_TEMP BLOB;
+    V_BFILE BFILE;
+    V_NOMBRE_FOTO VARCHAR (20);
+BEGIN
+    Insert into proveedor values (15,EMPTY_BLOB(), datos_basicos(datos_basicos.Validar_nombre('Alpelo'),datos_basicos.Validar_correo('AlpeloDelivery@gmail.com'))) RETURNING foto INTO V_TEMP ;
+    V_NOMBRE_FOTO := '15.PNG';
     V_BFILE := BFILENAME('OBJETOS_PROV',V_NOMBRE_FOTO);
     DBMS_LOB.OPEN(V_BFILE, DBMS_LOB.LOB_READONLY);
     DBMS_LOB.LOADFROMFILE (V_TEMP, V_BFILE, dbms_lob.getlength(V_BFILE));
