@@ -49,37 +49,37 @@ VALUES (16,8,'Ezequiel Zamora');
 --CALLES
 
 INSERT INTO calle(c_calle,c_mun,c_es,nombre) 
-VALUES (1,1,1,'Calle Yavita');
+VALUES (1,1,1,'Yavita');
 INSERT INTO calle(c_calle,c_mun,c_es,nombre) 
-VALUES (2,2,1,'Calle Aguerrevere');
+VALUES (2,2,1,'Aguerrevere');
 INSERT INTO calle(c_calle,c_mun,c_es,nombre) 
-VALUES (3,3,2,'Calle Sucre');
+VALUES (3,3,2,'Sucre');
 INSERT INTO calle(c_calle,c_mun,c_es,nombre) 
-VALUES (4,4,2,'Calle Real');
+VALUES (4,4,2,'Real');
 INSERT INTO calle(c_calle,c_mun,c_es,nombre) 
-VALUES (5,5,3,'Calle Boyaca');
+VALUES (5,5,3,'Boyaca');
 INSERT INTO calle(c_calle,c_mun,c_es,nombre) 
-VALUES (6,6,3,'Calle Bolivar');
+VALUES (6,6,3,'Bolivar');
 INSERT INTO calle(c_calle,c_mun,c_es,nombre) 
-VALUES (7,7,4,'Calle Bermudez');
+VALUES (7,7,4,'Bermudez');
 INSERT INTO calle(c_calle,c_mun,c_es,nombre) 
-VALUES (8,8,4,'Calle Carmen de Cura');
+VALUES (8,8,4,'Carmen de Cura');
 INSERT INTO calle(c_calle,c_mun,c_es,nombre) 
-VALUES (9,9,5,'Calle Ambulatorio');
+VALUES (9,9,5,'Ambulatorio');
 INSERT INTO calle(c_calle,c_mun,c_es,nombre) 
-VALUES (10,10,5,'Calle Calle berna');
+VALUES (10,10,5,'berna');
 INSERT INTO calle(c_calle,c_mun,c_es,nombre) 
-VALUES (11,11,6,'Calle Liccione');
+VALUES (11,11,6,'Liccione');
 INSERT INTO calle(c_calle,c_mun,c_es,nombre) 
-VALUES (12,12,6,'Calle Guarapiche');
+VALUES (12,12,6,'Guarapiche');
 INSERT INTO calle(c_calle,c_mun,c_es,nombre) 
-VALUES (13,13,7,'Calle Urbina');
+VALUES (13,13,7,'Urbina');
 INSERT INTO calle(c_calle,c_mun,c_es,nombre) 
 VALUES (14,14,7,'Calle 142');
 INSERT INTO calle(c_calle,c_mun,c_es,nombre) 
-VALUES (15,15,8,'Calle Independencia');
+VALUES (15,15,8,'Independencia');
 INSERT INTO calle(c_calle,c_mun,c_es,nombre) 
-VALUES (15,16,8,'Calle La Yaguara ');
+VALUES (16,16,8,'La Yaguara ');
 
 --Aliados Comerciales
 
