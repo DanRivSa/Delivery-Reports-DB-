@@ -1,5 +1,6 @@
 CREATE OR REPLACE DIRECTORY OBJETOS_LOB AS 'C:\imagenes\';
 CREATE OR REPLACE DIRECTORY OBJETOS_ALI AS 'C:\imagenes\aliados\';
+CREATE OR REPLACE DIRECTORY OBJETOS_PROV AS 'C\imagenes\proveedores\';
 
 --GRANT READ, WRITE ON DIRECTORY OBJETOS_LOB TO ER;
 
@@ -21,37 +22,33 @@ CREATE TYPE historico AS OBJECT
  STATIC FUNCTION Validar_fecha2(fecha_inicio DATE, fecha_fin DATE) RETURN DATE
 );
 
---SINTAXIS DE LATITUD Y LONGITUD: XXX°XXX"XXX"X -> LA ULTIMA X SIENDO UNO DE LOS PUNTOS CARDINALES (N,S,E,O)
-
 CREATE TYPE datos_lugar AS OBJECT(
-nombre VARCHAR(30),
-longitud VARCHAR(30),
-latitud VARCHAR(30),
-STATIC FUNCTION Validar_Nombre(nombre VARCHAR) RETURN VARCHAR,
-STATIC FUNCTION Validar_Latitud(lat VARCHAR) RETURN VARCHAR,
-STATIC FUNCTION Validar_Longitud(lon VARCHAR) RETURN VARCHAR
+latitud NUMBER,
+longitud NUMBER,
 );
 
 --FUNCTIONS TDA
 
-CREATE OR REPLACE TYPE BODY datos_basicos IS
-STATIC FUNCTION Validar_Nombre(nombre VARCHAR) RETURN VARCHAR
+CREATE OR REPLACE TYPE BODY datos_basicos 
 IS
-BEGIN
- IF REGEXP_LIKE(nombre, '^[[:alpha:]]{0,25}[[:alpha:][:blank:]]+$') THEN
- return (nombre);
- ELSE
- RAISE_APPLICATION_ERROR(-20001,'El nombre solo debe contemplar letras, caracteres especiales y numeros no estan permitidos');
- END IF;
-END;
-STATIC FUNCTION Validar_Correo(correo VARCHAR) RETURN VARCHAR
-IS
-    BEGIN
-        IF correo LIKE '%@%.%' THEN
-            return (correo);
+    STATIC FUNCTION Validar_Nombre(nombre VARCHAR) RETURN VARCHAR
+    IS
+        BEGIN
+        IF REGEXP_LIKE(nombre, '^[[:alpha:]]{0,25}[[:alpha:][:blank:]]+$') THEN
+        return (nombre);
         ELSE
-            RAISE_APPLICATION_ERROR(-20001,'Correo invalido.Ingrese un correo con un formato valido');
+        RAISE_APPLICATION_ERROR(-20001,'El nombre solo debe contemplar letras, caracteres especiales y numeros no estan permitidos');
         END IF;
+    END;
+    STATIC FUNCTION Validar_Correo(correo VARCHAR) RETURN VARCHAR
+    IS
+        BEGIN
+            IF correo LIKE '%@%.%' THEN
+                return (correo);
+            ELSE
+                RAISE_APPLICATION_ERROR(-20001,'Correo invalido.Ingrese un correo con un formato valido');
+            END IF;
+        END;
     END;
 END;
 
@@ -77,36 +74,6 @@ IS
     END;
 END;
 
-CREATE OR REPLACE TYPE BODY datos_lugar 
-IS
-    STATIC FUNCTION Validar_Nombre (nombre VARCHAR) RETURN VARCHAR
-    IS
-    BEGIN
-        IF REGEXP_LIKE(nombre, '^[[:alpha:]]{0,25}[[:alpha:][:blank:]]+$') THEN
-            return (nombre);
-        ELSE
-            RAISE_APPLICATION_ERROR(-20001,'El nombre solo debe contemplar letras, caracteres especiales y numeros no estan permitidos');
-        END IF;
-    END;
-    STATIC FUNCTION Validar_Latitud(lat VARCHAR) RETURN VARCHAR
-    IS
-    BEGIN
-        IF (lat LIKE '%°%"%"N') OR (lat LIKE '%°%"%"S') OR (lat LIKE '%°%"%"E') OR (lat LIKE '%°%"%"O')  THEN
-            RETURN (lat);
-        ELSE
-            RAISE_APPLICATION_ERROR(-20001, 'Formato de latitud no valido, debe cumplir com la forma: XXX°XXX"XXX"X -> siendo la ultima X un punto cardinal (N,S,E,O)');
-        END IF;
-    END;
-    STATIC FUNCTION Validar_Longitud(lon VARCHAR) RETURN VARCHAR
-    IS
-    BEGIN
-        IF (lon LIKE '%°%"%"N') OR (lon LIKE '%°%"%"S') OR (lon LIKE '%°%"%"E') OR (lon LIKE '%°%"%"O')  THEN
-            RETURN (lon);
-        ELSE
-            RAISE_APPLICATION_ERROR(-20001, 'Formato de longitud no valido, debe cumplir com la forma: XXX°XXX"XXX"X -> siendo la ultima X un punto cardinal (N,S,E,O)');
-        END IF;
-    END;
-END;
 
 -- TABLES
 --EMPRESAS
