@@ -218,10 +218,10 @@ CREATE TABLE unidad(
  cod_calle INT NOT NULL,
  cod_municipio INT NOT NULL,
  cod_estado INT NOT NULL,
+ coordenadas_actuales datos_lugar,
  tipo_unidad VARCHAR2(15) NOT NULL,
  estado_unidad CHAR NOT NULL,
  velocidad_promedio NUMBER NOT NULL,
- coordenadas_actuales datos_lugar,
  CONSTRAINT CHK_uni_tipo CHECK(tipo_unidad in ('moto','camioneta','bicicleta')),
  CONSTRAINT CHK_uni_estao CHECK(estado_unidad in ('v','r')), 
 -- r=reparacion, v=vigente
