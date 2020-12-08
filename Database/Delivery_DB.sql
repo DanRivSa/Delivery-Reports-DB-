@@ -258,7 +258,7 @@ CONSTRAINT PK_servicio PRIMARY KEY (id_servicio,id_prov)
 
 CREATE TABLE acuerdo_servicio(
 id_acuerdo INT NOT NULL,
-tiempo_calculo INT NOT NULL,
+tiempo_calculo varchar(20) NOT NULL,
 precio_as INT NOT NULL,
 id_prov_serv INT NOT NULL,
 id_serv INT NOT NULL,
