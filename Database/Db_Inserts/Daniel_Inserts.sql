@@ -292,6 +292,7 @@ INSERT INTO sede VALUES(15,15,13,13,7,datos_lugar(10.12060918672306, -68.0442855
 
 
 --UNIDADES -> (id_unidad,id_sede,id_prov,calle,mun,estado,datos_lugar(latitud,longitud),tipo_unidad,estado_unidad,velocidad_promedio)
+--tiene un error, las velocidades estan en km/h, abajo estan los updates
 INSERT INTO unidad VALUES (1,1,1,46,46,24,datos_lugar(10.503803783039288, -66.91301088313686),'camioneta','v',80);
 INSERT INTO unidad VALUES (2,1,1,46,46,24,datos_lugar(10.503803783039288, -66.91301088313686),'moto','v',43);
 INSERT INTO unidad VALUES (3,1,1,46,46,24,datos_lugar(10.503803783039288, -66.91301088313686),'bicicleta','v',15);
@@ -337,3 +338,9 @@ INSERT INTO unidad VALUES (42,14,14,35,35,18,datos_lugar(10.473694892845984, -64
 INSERT INTO unidad VALUES (43,15,15,13,13,7,datos_lugar(10.12060918672306, -68.04428557370942),'camioneta','v',80);
 INSERT INTO unidad VALUES (44,15,15,13,13,7,datos_lugar(10.12060918672306, -68.04428557370942),'moto','v',43);
 INSERT INTO unidad VALUES (45,15,15,13,13,7,datos_lugar(10.12060918672306, -68.04428557370942),'bicicleta','v',15);
+
+
+--Correccion de velocidades (km/h -> m/s)
+UPDATE unidad SET velocidad_promedio = 22.22 WHERE tipo_unidad = 'camioneta';
+UPDATE unidad SET velocidad_promedio = 11.94 WHERE tipo_unidad = 'moto';
+UPDATE unidad SET velocidad_promedio = 4.16 WHERE tipo_unidad = 'bicicleta';
