@@ -7,6 +7,9 @@
 	<queryString language="plsql">
 		<![CDATA[{CALL aliadorep2($P{ORACLE_REF_CURSOR}, $P{codigo_estado} )}]]>
 	</queryString>
+	<field name="FOTO" class="java.io.InputStream">
+		<property name="com.jaspersoft.studio.field.label" value="FOTO"/>
+	</field>
 	<field name="SECTOR" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="SECTOR"/>
 	</field>
@@ -128,9 +131,9 @@
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="56" splitType="Stretch">
+		<band height="70" splitType="Stretch">
 			<line>
-				<reportElement x="0" y="44" width="555" height="1" uuid="b1909bc5-7289-4bd4-a207-a1b24adb9552"/>
+				<reportElement x="0" y="55" width="555" height="1" uuid="b1909bc5-7289-4bd4-a207-a1b24adb9552"/>
 			</line>
 			<textField>
 				<reportElement x="60" y="10" width="50" height="30" uuid="18d0edee-ac9d-4cb2-81bd-ceebd8279e65">
@@ -186,8 +189,12 @@
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1eb62a25-9684-4757-acad-8d0669839682"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{EMPRESA_DELIVERY} +":   $"+$F{PRECIO_AS}  + " / " + $F{TIEMPO_CALCULO} ]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{EMPRESA_DELIVERY} +":   $"+$F{PRECIO_AS}  + " / " + $F{TIEMPO_CALCULO}]]></textFieldExpression>
 			</textField>
+			<image>
+				<reportElement x="5" y="3" width="51" height="45" uuid="3061e5bb-b9a0-4762-9fc8-c44fb10f8097"/>
+				<imageExpression><![CDATA[$F{FOTO}]]></imageExpression>
+			</image>
 		</band>
 	</detail>
 </jasperReport>

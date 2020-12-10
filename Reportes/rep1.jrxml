@@ -6,6 +6,9 @@
 	<queryString language="plsql">
 		<![CDATA[{CALL presupuesto_prov($P{ORACLE_REF_CURSOR})}]]>
 	</queryString>
+	<field name="FOTO" class="java.io.InputStream">
+		<property name="com.jaspersoft.studio.field.label" value="FOTO"/>
+	</field>
 	<field name="EMPRESA_DELIVERY" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="EMPRESA_DELIVERY"/>
 	</field>
@@ -124,7 +127,7 @@
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="49" splitType="Stretch">
+		<band height="63" splitType="Stretch">
 			<textField>
 				<reportElement x="70" y="0" width="81" height="30" uuid="4da8311f-d479-40f5-bf13-53f5e0bc8682">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c749820f-4865-4a88-9087-f4cad893fd5c"/>
@@ -161,8 +164,12 @@
 				<textFieldExpression><![CDATA[$F{FECHA_INICIO} +"-"+$F{FECHA_FIN}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="0" y="40" width="555" height="1" uuid="fdfb4b24-5182-4e49-9480-baefed93a6ff"/>
+				<reportElement x="0" y="50" width="555" height="1" uuid="fdfb4b24-5182-4e49-9480-baefed93a6ff"/>
 			</line>
+			<image>
+				<reportElement x="10" y="3" width="46" height="40" uuid="5ff89c0f-c6cc-4a37-b7c1-9b23017e1f04"/>
+				<imageExpression><![CDATA[$F{FOTO}]]></imageExpression>
+			</image>
 		</band>
 	</detail>
 </jasperReport>
