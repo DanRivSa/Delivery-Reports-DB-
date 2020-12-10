@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.13.0.final using JasperReports Library version 6.13.0-46ada4d1be8f3c5985fd0b6146f3ed44caed6f05  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="prueba" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="8ccd1a7c-09cb-46f4-bb4d-dbb146faa8ef">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="system"/>
+	<queryString language="plsql">
+		<![CDATA[{CALL presupuesto_prov($P{ORACLE_REF_CURSOR})}]]>
+	</queryString>
+	<field name="EMPRESA_DELIVERY" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="EMPRESA_DELIVERY"/>
+	</field>
+	<field name="CANT_ENVIO" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="CANT_ENVIO"/>
+	</field>
+	<field name="OFERTA" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="OFERTA"/>
+	</field>
+	<field name="TIEMPO_CALCULO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="TIEMPO_CALCULO"/>
+	</field>
+	<field name="PRECIO_AS" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="PRECIO_AS"/>
+	</field>
+	<field name="FECHA_INICIO" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="FECHA_INICIO"/>
+	</field>
+	<field name="FECHA_FIN" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="FECHA_FIN"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="63" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="10" width="555" height="52" uuid="331f31fe-18e9-4e0c-a109-546ed4439a89"/>
+				<textElement textAlignment="Center">
+					<font fontName="Serif" size="25" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Presupuesto de proveedores de servicio de delivery]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="35" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="1" width="555" height="28" forecolor="rgba(0, 0, 0, 0.0)" backcolor="rgba(133, 247, 255, 0.61960787)" uuid="16c2d684-c280-4e8a-bf4f-b7d07ebb07d8"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="70" y="0" width="81" height="30" uuid="f116b8a4-0c8b-4b3d-a86f-569390223e99">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c749820f-4865-4a88-9087-f4cad893fd5c"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="10"/>
+				</textElement>
+				<text><![CDATA[Empresa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="160" y="0" width="79" height="30" uuid="35e9dd96-2346-400e-b30c-0d8259d7e389">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2f44ee26-e5f8-4c46-8554-0d4263e72558"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="10"/>
+				</textElement>
+				<text><![CDATA[Modo de cálculo de presupuesto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="260" y="0" width="79" height="30" uuid="c5b9c2db-9e4c-44e3-8891-c6d553a0b9cc">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6449f291-471b-415d-9dd9-ecec88954676"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="10"/>
+				</textElement>
+				<text><![CDATA[OFERTA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="350" y="0" width="92" height="30" uuid="581ed041-0ea5-4621-a7e4-f92a628fcb87">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b8edd110-913c-4482-9707-04055d1215bc"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="10"/>
+				</textElement>
+				<text><![CDATA[Precio segun acuerdo de servicio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="450" y="0" width="105" height="20" uuid="3444c0e3-99dc-4b54-84e9-90c9b1f124a9">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8145449e-1036-4d13-ac08-9b574c15fe4d"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="10"/>
+				</textElement>
+				<text><![CDATA[Fecha de vigencia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="81" height="30" uuid="b8e93cc0-abbd-4fed-af69-f71d7a5e21bb">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c749820f-4865-4a88-9087-f4cad893fd5c"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="10"/>
+				</textElement>
+				<text><![CDATA[Logo]]></text>
+			</staticText>
+			<line>
+				<reportElement x="450" y="-1" width="1" height="31" uuid="5294b0b6-97ef-41b4-8f16-e7330d1182ac"/>
+			</line>
+			<line>
+				<reportElement x="350" y="-1" width="1" height="31" uuid="946a7528-1095-452b-934c-748fe7c1c5d4"/>
+			</line>
+			<line>
+				<reportElement x="250" y="-2" width="1" height="31" uuid="e829b986-4472-43fd-be70-a7509a21d38f"/>
+			</line>
+			<line>
+				<reportElement x="150" y="-4" width="1" height="31" uuid="9d980567-f55d-4849-b0ee-4539393fbd82"/>
+			</line>
+			<line>
+				<reportElement x="70" y="-1" width="1" height="31" uuid="2091b407-a9a1-4890-baa7-8484433f28a0"/>
+			</line>
+			<line>
+				<reportElement x="0" y="30" width="555" height="1" uuid="91a89efe-ff03-435c-957d-fc6ed4c6e8ee"/>
+			</line>
+			<line>
+				<reportElement x="0" y="-1" width="551" height="1" uuid="146ebc4a-996d-4a8a-8369-4cf6e5ff2838"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="49" splitType="Stretch">
+			<textField>
+				<reportElement x="70" y="0" width="81" height="30" uuid="4da8311f-d479-40f5-bf13-53f5e0bc8682">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c749820f-4865-4a88-9087-f4cad893fd5c"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{EMPRESA_DELIVERY}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="160" y="0" width="79" height="30" uuid="c7703616-b54b-49c0-a14a-df81626220c4">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2f44ee26-e5f8-4c46-8554-0d4263e72558"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{CANT_ENVIO}+" envios" +"*"+$F{TIEMPO_CALCULO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="260" y="0" width="79" height="30" uuid="0a64a519-c15e-402d-bf27-115e9b21386f">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6449f291-471b-415d-9dd9-ecec88954676"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{OFERTA} != null ?  $F{OFERTA} : "N/A"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="350" y="0" width="79" height="30" uuid="99845126-86ed-4b89-b8f4-c0a96d2f727f">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b8edd110-913c-4482-9707-04055d1215bc"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{PRECIO_AS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="450" y="0" width="100" height="30" uuid="d9152956-25b3-4590-8885-e25aaa7b8434">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8145449e-1036-4d13-ac08-9b574c15fe4d"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{FECHA_INICIO} +"-"+$F{FECHA_FIN}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="40" width="555" height="1" uuid="fdfb4b24-5182-4e49-9480-baefed93a6ff"/>
+			</line>
+		</band>
+	</detail>
+</jasperReport>

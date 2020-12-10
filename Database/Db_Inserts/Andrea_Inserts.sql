@@ -567,7 +567,7 @@ INSERT INTO ACUERDO_SERVICIO VALUES
 (4,'MES',300,4,7,4,historico(historico.Validar_fecha('11-11-2020'),historico.Validar_fecha2('11-11-2020','11-11-2021')) );
 
 INSERT INTO ACUERDO_SERVICIO VALUES
-(5,'MES',60,5,9,13,historico(historico.Validar_fecha('11-01-2020'),historico.Validar_fecha2('11-01-2020','11-01-2021')) );
+(5,'MES',60,5,9,13,historico(historico.Validar_fecha('13-02-2020'),historico.Validar_fecha2('13-02-2020','13-02-2021')) );
 
 INSERT INTO ACUERDO_SERVICIO VALUES
 (6,'MES',100,6,11,1,historico(historico.Validar_fecha('13-01-2020'),historico.Validar_fecha2('13-01-2020','13-01-2021')) );
@@ -596,7 +596,7 @@ INSERT INTO ACUERDO_SERVICIO VALUES
 (13,'MES',100,15,26,3,historico(historico.Validar_fecha('15-11-2020'),historico.Validar_fecha2('15-11-2020','15-11-2021')) );
 
 INSERT INTO ACUERDO_SERVICIO VALUES
-(14,'MES',100,14,25,12,historico(historico.Validar_fecha('16-11-2020'),historico.Validar_fecha2('16-11-2020','16-11-2021')) );
+(14,'MES',90,14,25,12,historico(historico.Validar_fecha('18-11-2020'),historico.Validar_fecha2('18-11-2020','22-12-2021')) );
 
 INSERT INTO ACUERDO_SERVICIO VALUES
 (15,'MES',100,13,24,11,historico(historico.Validar_fecha('15-01-2020'),historico.Validar_fecha2('15-01-2020','15-01-2021')) );

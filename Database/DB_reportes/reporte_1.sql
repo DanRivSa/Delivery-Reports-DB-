@@ -1,5 +1,6 @@
 -- REPORTE 1
-
+-- REPORTE DE PRESUPUESTO DE PROVEEDORES DE SERVICIO DE DELIVERY
+-- select de prueba
 SELECT 
     p.FOTO,
 	p.datos_prov.nombre_usuario AS empresa_delivery,
@@ -41,6 +42,10 @@ FROM SERVICIO s
 where rownum <= MAXID
 ORDER BY p.datos_prov.nombre_usuario;
 END;
+-- fin del codigo de reporte
 
 -- llamada en jaspersoft
 {CALL presupuesto_prov($P{ORACLE_REF_CURSOR})}
+
+
+
