@@ -34,12 +34,12 @@ IS
     STATIC FUNCTION Validar_Nombre(nombre VARCHAR) RETURN VARCHAR
     IS
         BEGIN
-        IF REGEXP_LIKE(nombre, '^[[:alpha:]]{0,25}[[:alpha:][:blank:]]+$') THEN
-        return (nombre);
-        ELSE
-        RAISE_APPLICATION_ERROR(-20001,'El nombre solo debe contemplar letras, caracteres especiales y numeros no estan permitidos');
-        END IF;
-    END;
+            IF REGEXP_LIKE(nombre, '^[[:alpha:]]{0,25}[[:alpha:][:blank:]]+$') THEN
+            return (nombre);
+            ELSE
+            RAISE_APPLICATION_ERROR(-20001,'El nombre solo debe contemplar letras, caracteres especiales y numeros no estan permitidos');
+            END IF;
+        END;
     STATIC FUNCTION Validar_Correo(correo VARCHAR) RETURN VARCHAR
     IS
         BEGIN
@@ -48,7 +48,7 @@ IS
             ELSE
                 RAISE_APPLICATION_ERROR(-20001,'Correo invalido.Ingrese un correo con un formato valido');
             END IF;
-    END;
+        END;
 END;
 
 
