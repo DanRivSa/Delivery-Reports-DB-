@@ -300,6 +300,16 @@ CONSTRAINT fk_usuario_envio FOREIGN KEY (id_usuario_envio) REFERENCES usuario(id
 CONSTRAINT pk_envio PRIMARY KEY (tracking,id_acuerdo,id_usuario_envio,id_dir)
 );
 
+-- ALTER TABLE ENVIO ES NECESARIO TENER REFERENCIA A LA UNIDAD EN LA TABLA ENVIO
+
+ALTER TABLE ENVIO 
+ADD (id_unidad INT,
+     id_prov_u INT,
+     id_sede_u INT);
+ALTER TABLE ENVIO 
+ADD CONSTRAINT FK_env_unidad FOREIGN KEY (id_unidad,id_prov_u,id_sede_u) REFERENCES unidad (id_unidad,id_sede,id_prov);
+
+
 CREATE TABLE producto(
 id_producto INT NOT NULL,
 id_aliado INT NOT NULL,
