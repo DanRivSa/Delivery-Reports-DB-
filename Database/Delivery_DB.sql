@@ -277,7 +277,7 @@ id_prov INT NOT NULL,
 id_aliado INT NOT NULL,
 id_servicio INT NOT NULL,
 CONSTRAINT fk_lugar_estado FOREIGN KEY (cod_estado) REFERENCES estado(codigo_estado),
-CONSTRAINT fk_lugar_acuerdo FOREIGN KEY (id_acuerdo,id_prov,id_servicio,id_aliado) REFERENCES acuerdo_servicio(id_acuerdo,id_serv,id_prov_serv,id_aliado),
+CONSTRAINT fk_lugar_acuerdo FOREIGN KEY (id_acuerdo,id_prov,id_servicio,id_aliado) REFERENCES acuerdo_servicio(id_acuerdo,id_prov_serv,id_serv,id_aliado),
 CONSTRAINT PK_lugar_acuerdo PRIMARY KEY (id_lugar_ac,id_acuerdo,id_prov,id_aliado,cod_estado)
 );
 
