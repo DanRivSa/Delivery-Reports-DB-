@@ -1242,4 +1242,40 @@ INSERT INTO REGISTRO VALUES (13,14,13,historico(historico.Validar_fecha('1-12-20
 INSERT INTO REGISTRO VALUES (14,15,15,historico(historico.Validar_fecha('5-12-2020'),historico.Validar_fecha2('5-12-2020','5-12-2020')) );
 
 
+--VALORACION
+
+INSERT INTO VALORACION VALUES (0,1,1,'5',historico(historico.Validar_fecha('20-11-2020'),historico.Validar_fecha2('20-11-2020','20-11-2020')) );
+INSERT INTO VALORACION VALUES (1,2,3,'4',historico(historico.Validar_fecha('22-11-2020'),historico.Validar_fecha2('22-11-2020','22-11-2020')) );
+INSERT INTO VALORACION VALUES (2,3,2,'3',historico(historico.Validar_fecha('24-11-2020'),historico.Validar_fecha2('24-11-2020','24-11-2020')) );
+INSERT INTO VALORACION VALUES (3,4,4,'5',historico(historico.Validar_fecha('26-11-2020'),historico.Validar_fecha2('26-11-2020','26-11-2020')) );
+INSERT INTO VALORACION VALUES (4,5,6,'5',historico(historico.Validar_fecha('28-11-2020'),historico.Validar_fecha2('28-11-2020','28-11-2020')) );
+INSERT INTO VALORACION VALUES (5,6,5,'4',historico(historico.Validar_fecha('19-11-2020'),historico.Validar_fecha2('19-11-2020','19-11-2020')) );
+INSERT INTO VALORACION VALUES (6,7,7,'2',historico(historico.Validar_fecha('21-11-2020'),historico.Validar_fecha2('21-11-2020','21-11-2020')) );
+INSERT INTO VALORACION VALUES (7,8,9,'3',historico(historico.Validar_fecha('23-11-2020'),historico.Validar_fecha2('23-11-2020','23-11-2020')) );
+INSERT INTO VALORACION VALUES (8,9,8,'4',historico(historico.Validar_fecha('25-11-2020'),historico.Validar_fecha2('25-11-2020','25-11-2020')) );
+INSERT INTO VALORACION VALUES (9,10,10,'5',historico(historico.Validar_fecha('27-11-2020'),historico.Validar_fecha2('27-11-2020','27-11-2020')) );
+INSERT INTO VALORACION VALUES (10,11,12,'2',historico(historico.Validar_fecha('28-11-2020'),historico.Validar_fecha2('28-11-2020','28-11-2020')) );
+INSERT INTO VALORACION VALUES (11,12,11,'4',historico(historico.Validar_fecha('29-11-2020'),historico.Validar_fecha2('29-11-2020','29-11-2020')) );
+INSERT INTO VALORACION VALUES (12,13,14,'4',historico(historico.Validar_fecha('30-11-2020'),historico.Validar_fecha2('30-11-2020','30-11-2020')) );
+INSERT INTO VALORACION VALUES (13,14,13,'5',historico(historico.Validar_fecha('1-12-2020'),historico.Validar_fecha2('1-12-2020','1-12-2020')) );
+INSERT INTO VALORACION VALUES (14,15,15,'1',historico(historico.Validar_fecha('5-12-2020'),historico.Validar_fecha2('5-12-2020','5-12-2020')) );
+
+
+--DIRECCION
+
+INSERT INTO DIRECCION VALUES (0,1,46,46,24,datos_lugar(10.50320248656573, -66.90995316476166));
+INSERT INTO DIRECCION VALUES (1,2,24,24,12,datos_lugar(10.481824261271125, -66.85861968566459));
+INSERT INTO DIRECCION VALUES (2,3,41,41,21,datos_lugar(10.604048073117825, -66.89429757082159));
+INSERT INTO DIRECCION VALUES (3,4,10,10,5,datos_lugar(8.612345654534371, -70.24912265713229));
+INSERT INTO DIRECCION VALUES (4,5,23,23,12,datos_lugar(10.495517572392917, -66.83383534323721));
+INSERT INTO DIRECCION VALUES (5,6,7,7,4,datos_lugar(10.236243355419127, -67.59547203039416));
+INSERT INTO DIRECCION VALUES (6,7,31,31,16,datos_lugar(10.073728903197944, -69.29590976211249));
+INSERT INTO DIRECCION VALUES (7,8,21,21,11,datos_lugar(10.923746502465464, -64.06663320740016));
+INSERT INTO DIRECCION VALUES (8,9,24,24,12,datos_lugar(10.481824261271125, -66.85861968566459));
+INSERT INTO DIRECCION VALUES (9,10,22,22,11,datos_lugar(11.0452157224627, -63.85847216340377));
+INSERT INTO DIRECCION VALUES (10,11,9,9,5,datos_lugar(8.639846221406565, -70.23667000130578));
+INSERT INTO DIRECCION VALUES (11,12,30,30,15,datos_lugar(9.923451252807101, -67.36416421745163));
+INSERT INTO DIRECCION VALUES (12,13,35,35,18,datos_lugar(10.446101067773844, -63.901387502040414));
+INSERT INTO DIRECCION VALUES (13,14,11,11,6,datos_lugar(7.348729541845047, -61.82540594734454));
+INSERT INTO DIRECCION VALUES (14,15,13,13,7,datos_lugar(10.2514559170782, -68.01036786029957));
 

@@ -34,8 +34,7 @@ END;
 
  --  ESTA ES LA FUNCION DE RIVERO 
 
- 
-CREATE OR REPLACE FUNCTION distancia_haversine(lat1 NUMBER, lon1 NUMBER,lat2 NUMBER,lon2 NUMBER) RETURN NUMBER
+ CREATE OR REPLACE FUNCTION distancia_haversine(lat1 NUMBER, lon1 NUMBER,lat2 NUMBER,lon2 NUMBER) RETURN NUMBER
 IS
 PI CONSTANT NUMBER :=3.141592654;
 radio CONSTANT NUMBER :=6371000; --radio de la tierra en metros
@@ -72,11 +71,6 @@ BEGIN
     RETURN (ROUND(distancia)); --en metros
 END;
 
-
-
--- INICIO DE PROGRAMA ASIGNACIÓN DE VEHICULO 
-
-CREATE OR REPLACE PROCEDURE asignacion_de_vehiculo (id_envio) IS
 
 
 
