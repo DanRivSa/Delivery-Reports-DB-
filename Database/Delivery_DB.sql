@@ -294,7 +294,7 @@ id_aliado INT NOT NULL,
 id_serv INT NOT NULL,
 punto_de_referencia VARCHAR2(30),
 fechas historico,
-CONSTRAINT fk_acuerdo FOREIGN KEY (id_acuerdo,id_prov,id_serv,id_aliado) REFERENCES acuerdo_servicio(id_acuerdo,id_serv,id_prov_serv,id_aliado),
+CONSTRAINT fk_acuerdo FOREIGN KEY (id_acuerdo,id_serv,id_prov,id_aliado) REFERENCES acuerdo_servicio(id_acuerdo,id_serv,id_prov_serv,id_aliado),
 CONSTRAINT fk_lugar_envio FOREIGN KEY (id_dir,id_usuario_dir) REFERENCES direccion(id_direccion,id_usuario_direccion),
 CONSTRAINT fk_usuario_envio FOREIGN KEY (id_usuario_envio) REFERENCES usuario(id_usuario),
 CONSTRAINT pk_envio PRIMARY KEY (tracking,id_acuerdo,id_usuario_envio,id_dir)

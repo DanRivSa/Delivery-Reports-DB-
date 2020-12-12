@@ -600,3 +600,60 @@ INSERT INTO ACUERDO_SERVICIO VALUES
 
 INSERT INTO ACUERDO_SERVICIO VALUES
 (15,'MES',100,13,24,11,historico(historico.Validar_fecha('15-01-2020'),historico.Validar_fecha2('15-01-2020','15-01-2021')) );
+
+
+-- ALTER TABLE TABLA ENVIO
+
+ALTER TABLE envio DROP CONSTRAINT fk_acuerdo;
+ALTER TABLE envio ADD CONSTRAINT fk_acuerdo 
+FOREIGN KEY (id_acuerdo,id_serv,id_prov,id_aliado) REFERENCES acuerdo_servicio(id_acuerdo,id_serv,id_prov_serv,id_aliado);
+
+-- ENVIO 
+--(TRAC,ID_US,ID_US_DIR,ID_DIR,ID_ACUERDO,ID_PROV,ID_ALIADO,ID_SERV,PUNTO_REF,FECHA HISTORICO)
+
+INSERT INTO ENVIO VALUES (1,1,1,0,1,1,6,1,'Hotel Rincón ',
+historico(historico.Validar_fecha(TO_DATE('15-01-2020','DD-MM-YYYY')),NULL),NULL,NULL,NULL
+);
+INSERT INTO ENVIO VALUES (2,1,1,0,1,1,6,1,'Hotel Rincón ',
+historico(historico.Validar_fecha(TO_DATE('16-02-2020','DD-MM-YYYY')),NULL),NULL,NULL,NULL
+);
+INSERT INTO ENVIO VALUES (3,2,2,1,8,8,1,15,'Abasto Ramon ',
+historico(historico.Validar_fecha(TO_DATE('14-03-2020','DD-MM-YYYY')),NULL),NULL,NULL,NULL
+);
+INSERT INTO ENVIO VALUES (4,2,2,1,8,8,1,15,'Abasto Ramon ',
+historico(historico.Validar_fecha(TO_DATE('15-03-2020','DD-MM-YYYY')),NULL),NULL,NULL,NULL
+);
+
+INSERT INTO ENVIO VALUES (5,4,4,3,4,4,4,7,'La casona',
+historico(historico.Validar_fecha(TO_DATE('15-03-2020','DD-MM-YYYY')),NULL),NULL,NULL,NULL
+);
+INSERT INTO ENVIO VALUES (6,5,5,4,6,6,1,11,'Panaderia san pedro ',
+historico(historico.Validar_fecha(TO_DATE('6-03-2020','DD-MM-YYYY')),NULL),NULL,NULL,NULL
+);
+INSERT INTO ENVIO VALUES (7,5,5,4,6,6,1,11,'Panaderia san pedro ',
+historico(historico.Validar_fecha(TO_DATE('8-03-2020','DD-MM-YYYY')),NULL),NULL,NULL,NULL
+);
+INSERT INTO ENVIO VALUES (8,6,6,5,5,5,13,9,'iglesia coromoto',
+historico(historico.Validar_fecha(TO_DATE('15-03-2020','DD-MM-YYYY')),NULL),NULL,NULL,NULL
+);
+INSERT INTO ENVIO VALUES (9,7,7,6,7,7,8,12,'La gran carroza ',
+historico(historico.Validar_fecha(TO_DATE('13-11-2020','DD-MM-YYYY')),NULL),NULL,NULL,NULL
+);
+INSERT INTO ENVIO VALUES (10,10,10,9,9,9,11,17,'Los Juanes ',
+historico(historico.Validar_fecha(TO_DATE('25-11-2020','DD-MM-YYYY')),NULL),NULL,NULL,NULL
+);
+INSERT INTO ENVIO VALUES (11,11,11,10,11,12,4,22,'Edif. empresarial ',
+historico(historico.Validar_fecha(TO_DATE('14-08-2020','DD-MM-YYYY')),NULL),NULL,NULL,NULL
+);
+INSERT INTO ENVIO VALUES (12,9,9,8,6,6,1,11,'Centro empresarial',
+historico(historico.Validar_fecha(TO_DATE('18-05-2020','DD-MM-YYYY')),NULL),NULL,NULL,NULL
+);
+INSERT INTO ENVIO VALUES (13,9,9,8,6,6,1,11,'Centro empresarial',
+historico(historico.Validar_fecha(TO_DATE('20-05-2020','DD-MM-YYYY')),NULL),NULL,NULL,NULL
+);
+INSERT INTO ENVIO VALUES (14,9,9,8,6,6,1,11,'Centro empresarial',
+historico(historico.Validar_fecha(TO_DATE('14-05-2020','DD-MM-YYYY')),NULL),NULL,NULL,NULL
+);
+INSERT INTO ENVIO VALUES (15,8,8,7,9,9,11,17,'Hotel las rosas',
+historico(historico.Validar_fecha(TO_DATE('12-11-2020','DD-MM-YYYY')),NULL),NULL,NULL,NULL
+);
