@@ -1242,6 +1242,25 @@ INSERT INTO REGISTRO VALUES (13,14,13,historico(historico.Validar_fecha('1-12-20
 INSERT INTO REGISTRO VALUES (14,15,15,historico(historico.Validar_fecha('5-12-2020'),historico.Validar_fecha2('5-12-2020','5-12-2020')) );
 
 
+--VALORACION
+
+INSERT INTO VALORACION VALUES (0,1,1,'5',historico(historico.Validar_fecha('20-11-2020'),historico.Validar_fecha2('20-11-2020','20-11-2020')) );
+INSERT INTO VALORACION VALUES (1,2,3,'4',historico(historico.Validar_fecha('22-11-2020'),historico.Validar_fecha2('22-11-2020','22-11-2020')) );
+INSERT INTO VALORACION VALUES (2,3,2,'3',historico(historico.Validar_fecha('24-11-2020'),historico.Validar_fecha2('24-11-2020','24-11-2020')) );
+INSERT INTO VALORACION VALUES (3,4,4,'5',historico(historico.Validar_fecha('26-11-2020'),historico.Validar_fecha2('26-11-2020','26-11-2020')) );
+INSERT INTO VALORACION VALUES (4,5,6,'5',historico(historico.Validar_fecha('28-11-2020'),historico.Validar_fecha2('28-11-2020','28-11-2020')) );
+INSERT INTO VALORACION VALUES (5,6,5,'4',historico(historico.Validar_fecha('19-11-2020'),historico.Validar_fecha2('19-11-2020','19-11-2020')) );
+INSERT INTO VALORACION VALUES (6,7,7,'2',historico(historico.Validar_fecha('21-11-2020'),historico.Validar_fecha2('21-11-2020','21-11-2020')) );
+INSERT INTO VALORACION VALUES (7,8,9,'3',historico(historico.Validar_fecha('23-11-2020'),historico.Validar_fecha2('23-11-2020','23-11-2020')) );
+INSERT INTO VALORACION VALUES (8,9,8,'4',historico(historico.Validar_fecha('25-11-2020'),historico.Validar_fecha2('25-11-2020','25-11-2020')) );
+INSERT INTO VALORACION VALUES (9,10,10,'5',historico(historico.Validar_fecha('27-11-2020'),historico.Validar_fecha2('27-11-2020','27-11-2020')) );
+INSERT INTO VALORACION VALUES (10,11,12,'2',historico(historico.Validar_fecha('28-11-2020'),historico.Validar_fecha2('28-11-2020','28-11-2020')) );
+INSERT INTO VALORACION VALUES (11,12,11,'4',historico(historico.Validar_fecha('29-11-2020'),historico.Validar_fecha2('29-11-2020','29-11-2020')) );
+INSERT INTO VALORACION VALUES (12,13,14,'4',historico(historico.Validar_fecha('30-11-2020'),historico.Validar_fecha2('30-11-2020','30-11-2020')) );
+INSERT INTO VALORACION VALUES (13,14,13,'5',historico(historico.Validar_fecha('1-12-2020'),historico.Validar_fecha2('1-12-2020','1-12-2020')) );
+INSERT INTO VALORACION VALUES (14,15,15,'1',historico(historico.Validar_fecha('5-12-2020'),historico.Validar_fecha2('5-12-2020','5-12-2020')) );
+
+
 --DIRECCION
 
 INSERT INTO DIRECCION VALUES (0,1,46,46,24,datos_lugar(10.50320248656573, -66.90995316476166));
