@@ -315,7 +315,7 @@ INSERT INTO sucursal values (1,1,23,23,12,datos_lugar(10.493297557718028, -66.85
 
 --  2)KFC--A
 INSERT INTO sucursal values (2,2,36,36,18,datos_lugar(10.700697350745683, -63.11614396341646));
-INSERT INTO sucursal values (16,2,30,30,15,datos_lugar(19.39155767251942, -67.0680403524636));
+INSERT INTO sucursal values (20,2,36,36,18,datos_lugar(10.695799707517494, -63.11135181920434));
 
 --  3)MAXI DONAS--A
 INSERT INTO sucursal values (3,3,13,13,7,datos_lugar(10.251445508323604, -68.01048875831086));
@@ -343,9 +343,11 @@ INSERT INTO sucursal values (10,10,25,25,13,datos_lugar(10.120357838473504, -63.
 
 --  11)ISTORE --T
 INSERT INTO sucursal values (11,11,22,22,11,datos_lugar(11.029955199184782, -63.84202244847819));
+INSERT INTO sucursal values (18,11,11,11,6,datos_lugar(7.348431601882346, -61.82536303195503));
 
 --  12)FARMATODO --F
 INSERT INTO sucursal values (12,12,18,18,9,datos_lugar(11.111364909161194, -69.70827192941422));
+INSERT INTO sucursal values (16,12,36,36,18,datos_lugar(10.695799707517494, -63.11135181920434));
 
 --  13)FARMACIAS SAAS -F
 INSERT INTO sucursal values (13,13,7,7,4,datos_lugar(10.22039683531245,-67.59855824558446));
@@ -356,20 +358,6 @@ INSERT INTO sucursal values (14,14,15,15,8,datos_lugar(9.336514145011499, -68.65
 
 --  15)KABUKI SUSHI SALAD
 INSERT INTO sucursal values (15,15,37,37,19,datos_lugar(7.822324715149693, -72.30934620184321));
-
-
-
-
-INSERT INTO sucursal values (16,,,,,datos_lugar(,))
-INSERT INTO sucursal values (17,,,,,datos_lugar(,))
-INSERT INTO sucursal values (18,,,,,datos_lugar(,))
-INSERT INTO sucursal values (20,,,,,datos_lugar(,))
-INSERT INTO sucursal values (21,,,,,datos_lugar(,))
-INSERT INTO sucursal values (22,,,,,datos_lugar(,))
-INSERT INTO sucursal values (23,,,,,datos_lugar(,))
-INSERT INTO sucursal values (24,,,,,datos_lugar(,))
-INSERT INTO sucursal values (25,,,,,datos_lugar(,))
-
 
 
 
@@ -657,3 +645,11 @@ historico(historico.Validar_fecha(TO_DATE('14-05-2020','DD-MM-YYYY')),NULL),NULL
 INSERT INTO ENVIO VALUES (15,8,8,7,9,9,11,17,'Hotel las rosas',
 historico(historico.Validar_fecha(TO_DATE('12-11-2020','DD-MM-YYYY')),NULL),NULL,NULL,NULL
 );
+
+
+-- SUCURSALES EXTRA
+
+INSERT INTO sucursal values (16,12,36,36,18,datos_lugar(10.695799707517494, -63.11135181920434));
+INSERT INTO sucursal values (17,13,7,7,4,datos_lugar(10.235411316853634, -67.59580668961307));
+INSERT INTO sucursal values (18,11,11,11,6,datos_lugar(7.348431601882346, -61.82536303195503));
+INSERT INTO sucursal values (20,2,36,36,18,datos_lugar(10.695799707517494, -63.11135181920434));
