@@ -5,10 +5,10 @@ num_pedidos INT;
 BEGIN 
     SELECT COUNT (*) INTO num_pedidos from envio e 
         inner join direccion d on 
-        d.id_direccion = e.id_usuario_dir  
+        d.id_direccion = e.id_dir 
         WHERE 
         e.id_prov = proveedor AND  d.cod_mun = municipio AND d.cod_es = estado
-        AND e.fechas.fecha_inicio = fecha AND e.fechas.fecha_fin = NULL ;
+        AND e.fechas.fecha_inicio = fecha AND e.fechas.fecha_fin is NULL ;
 
 RETURN num_pedidos;
 END;
@@ -18,7 +18,7 @@ num_productos INT;
 BEGIN 
     SELECT COUNT (*) INTO num_productos from producto_envio p   
         WHERE 
-            p.id_p_s = id_pedido;
+            p.tracking = id_pedido;
 RETURN num_productos;
 END;
 
@@ -73,4 +73,46 @@ END;
 
 
 
+-- INICIO DE PROGRAMA ASIGNACIÓN DE VEHICULO 
 
+CREATE OR REPLACE PROCEDURE asignacion_de_vehiculo (id_pedido INT) IS
+cant_pedido INT;
+cant_prod INT;
+cant_unidad INT;
+distancia INT;
+id_usuario INT;
+proveedor int;
+fecha DATE;
+-- UBICACION
+
+estado INT;
+municipio INT;
+BEGIN 
+SELECT id_usuario_envio,id_prov,e.fechas.fecha_inicio into id_usuario,proveedor,fecha from envio e where tracking = id_pedido;
+SELECT cod_es,cod_mun into estado,municipio from direccion  
+where id_usuario_direccion = id_usuario;
+
+dbms_output.put_line('***********************************************');
+dbms_output.put_line('*   INICIO MODULO DE ASIGNACION DE VEHICULO   *');
+dbms_output.put_line('***********************************************');
+dbms_output.put_line('    ');
+cant_prod := cant_productos (id_pedido);
+dbms_output.put_line('Productos dentro del pedido: ' || cant_prod);
+cant_pedido := pedidos_direccion(proveedor,municipio,estado,fecha);
+dbms_output.put_line('Existen: ' || cant_pedido || ' envios dentro de la misma zona de destino');
+
+    IF cant_pedido < 4 THEN
+        
+
+    ELSE IF;
+    
+
+END;
+
+
+-- EJECUCUCION DEL METODO
+
+SET serveroutput ON
+BEGIN
+asignacion_de_vehiculo(1);
+END;
