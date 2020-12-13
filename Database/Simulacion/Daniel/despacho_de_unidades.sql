@@ -45,7 +45,7 @@ BEGIN
     --x=vt -> t=x/v
     distancia:= distancia_haversine(lato,lono,latd,lond); --distancia en metros
     tiempo:= (distancia/vel_promedio); -- tiempo en segundos
-    RETURN(tiempo/60); --devuelve minutos
+    RETURN(ROUND(tiempo/60)); --devuelve minutos
 END;
 
 --PROCEDIMIENTO
@@ -94,8 +94,9 @@ BEGIN
     --unidad
     SELECT velocidad_promedio INTO vel_prom FROM unidad WHERE id_unidad = numero_placa;
     SELECT tipo_unidad INTO tipo_uni FROM unidad WHERE id_unidad = numero_placa;
+    dbms_output.put_line('tipo de unidad: '||tipo_uni); --placa de la unidad (id)
     dbms_output.put_line('placa de unidad: '||numero_placa); --placa de la unidad (id)
-    dbms_output.put_line('velocidad de la unidad: '||vel_prom);  --velocidad promedio de la unidad
+    dbms_output.put_line('velocidad de la unidad: '||vel_prom * 100|| ' m/s');  --velocidad promedio de la unidad
     dbms_output.put_line('*    ');
 
     --cantidad de envios
@@ -161,7 +162,7 @@ BEGIN
             counter_sucursales:= counter_sucursales +1;
         END LOOP;
         dbms_output.put_line('*    ');
-        dbms_output.put_line('La unidad ha pasado por las sucursales y ha sido despachada a ->  '||calle || 'municipio '||municipio || 'edo. ' ||estado||', direccion del usuari@ '||app_username);
+        dbms_output.put_line('La unidad ha pasado por las sucursales y ha sido despachada a ->  '||calle || ' municipio '||municipio || ' edo. ' ||estado||', direccion del usuari@ '||app_username);
         --armar vector AB
         latud:=latusuario - latu;
         lonud:= lonusuario - lonu;
