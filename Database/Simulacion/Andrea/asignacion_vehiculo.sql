@@ -49,6 +49,7 @@ BEGIN
         SELECT * INTO id_unidad FROM (
         SELECT u.id_unidad from unidad u 
         WHERE u.cod_municipio = id_municipio  AND  u.cod_estado = id_estado AND u.id_sede = id_sede 
+        AND u.estado_unidad = 'v'
         ) WHERE ROWNUM =1; 
         RETURN id_unidad;
 END;
