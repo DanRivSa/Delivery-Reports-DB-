@@ -73,8 +73,8 @@ latd NUMBER;
 lond NUMBER;
 latud NUMBER;
 lonud NUMBER;
-latsum NUMBER;
-lonsum NUMBER;
+sumlat NUMBER;
+sumlon NUMBER;
 latusuario NUMBER;
 lonusuario NUMBER;
 --coordenadas originales de la unidad
