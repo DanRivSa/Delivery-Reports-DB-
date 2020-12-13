@@ -93,6 +93,7 @@ BEGIN
 
     --unidad
     SELECT velocidad_promedio INTO vel_prom FROM unidad WHERE id_unidad = numero_placa;
+    SELECT tipo_unidad INTO tipo_uni FROM unidad WHERE id_unidad = numero_placa;
     dbms_output.put_line('placa de unidad: '||numero_placa); --placa de la unidad (id)
     dbms_output.put_line('velocidad de la unidad: '||vel_prom);  --velocidad promedio de la unidad
     dbms_output.put_line('*    ');
@@ -160,7 +161,7 @@ BEGIN
             counter_sucursales:= counter_sucursales +1;
         END LOOP;
         dbms_output.put_line('*    ');
-        dbms_output.put_line('La unidad ha pasado por las sucursales y ha sido despachada a ->  '||calle ||municipio || 'edo ' ||estado||', direccion del usuari@ '||app_username);
+        dbms_output.put_line('La unidad ha pasado por las sucursales y ha sido despachada a ->  '||calle || 'municipio '||municipio || 'edo. ' ||estado||', direccion del usuari@ '||app_username);
         --armar vector AB
         latud:=latusuario - latu;
         lonud:= lonusuario - lonu;
@@ -170,7 +171,7 @@ BEGIN
         --mueve unidad
         WHILE latu!= latusuario AND lonu != lonusuario
         LOOP
-            tiempo:= tiempo_llegada(latu,lonu,latd,lond,vel_prom);
+            tiempo:= tiempo_llegada(latu,lonu,latusuario,lonusuario,vel_prom);
             --agrega la parte del vector director
             latu:= latu + sumlat;
             lonu:=lonu + sumlon;
