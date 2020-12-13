@@ -40,47 +40,18 @@ BEGIN
 RETURN num_unidades;
 END;
 
-
- --  ESTA ES LA FUNCION DE RIVERO 
-
- CREATE OR REPLACE FUNCTION distancia_haversine(lat1 NUMBER, lon1 NUMBER,lat2 NUMBER,lon2 NUMBER) RETURN NUMBER
-IS
-PI CONSTANT NUMBER :=3.141592654;
-radio CONSTANT NUMBER :=6371000; --radio de la tierra en metros
-lat1r NUMBER;
-lat2r NUMBER;
-lon1r NUMBER;
-lon2r NUMBER;
-delta_lat NUMBER;
-delta_lon NUMBER;
-hav_a NUMBER;
-hav_c NUMBER;
-distancia NUMBER;
-BEGIN
-    --transforma a radianes
-    lat1r:= lat1 * (PI/180);
-    lon1r := lon1 * (PI/180);
-    lat2r := lat2 * (PI/180);
-    lon2r := lon2 * (PI/180);
-    
-    --declara delta
-    delta_lat:= lat2r-lat1r;
-    delta_lon := lon2r - lon1r;
-    
-    --hav_a -> a = sin²(Δφ/2) + cos φ1 ⋅ cos φ2 ⋅ sin²(Δλ/2)
-    hav_a := SIN(delta_lat/2)**2 + COS(lat1r)*COS(lat2r)*SIN(delta_lon/2)**2;
-    
-    --hav_c -> c = 2 ⋅ atan2( √a, √(1−a) )
-    hav_c:=ATAN2(SQRT(hav_a),SQRT(1-hav_a));
-    
-    --distancia -> d = R ⋅ c
-    
-    distancia:= radio * hav_c;
-    
-    RETURN (ROUND(distancia)); --en metros
+CREATE OR REPLACE FUNCTION buscar_unidad (id_sede int, tipo_unidad VARCHAR2) RETURN number IS
+id_unidad INT;
+id_estado INT;
+id_municipio INT;
+BEGIN 
+        select s.cod_mun,s.cod_es into id_municipio,id_estado from sede s where s.id_sede = id_sede; 
+        SELECT * INTO id_unidad FROM (
+        SELECT u.id_unidad from unidad u 
+        WHERE u.cod_municipio = id_municipio  AND  u.cod_estado = id_estado AND u.id_sede = id_sede 
+        ) WHERE ROWNUM =1; 
+        RETURN id_unidad;
 END;
-
-
 
 -- INICIO DEL PROCEDIMIENTO PARA  ASIGNACIÓN DE VEHICULO 
 
@@ -91,25 +62,36 @@ cant_prod INT;
 cant_unidad INT;
 total_uni INT;
 porc_unidades INT;
+nro_unidad INT;
 -- DATOS DE ENVIO
 id_usuario INT;
 proveedor int;
 fecha DATE;
+sede INT;
 -- UBICACION
 estado INT;
 municipio INT;
 distancia INT;
+-- latitudes y longitudes
+lat_sede  INT;
+lon_sede INT;
+lat_us INT;
+lon_us INT;
+
 
 BEGIN 
-SELECT id_usuario_envio,id_prov,e.fechas.fecha_inicio into id_usuario,proveedor,fecha from envio e where tracking = id_pedido;
-SELECT cod_es,cod_mun into estado,municipio from direccion  
+--OBTENER DATOS DE ENVIO
+SELECT id_usuario_envio,id_prov, id_sede_u,e.fechas.fecha_inicio into id_usuario,proveedor,sede,fecha from envio e where tracking = id_pedido;
+-- OBTENER DIRECCION DE USUARIO
+SELECT dir.cod_es,dir.cod_mun,dir.ubi_direccion.latitud, dir.ubi_direccion.longitud into estado,municipio,lat_us,lon_us from direccion dir
 where id_usuario_direccion = id_usuario;
-
+-- obtener longitud y latitud de sede
+SELECT s.ubi_sede.latitud,s.ubi_sede.longitud INTO lat_sede,lon_sede FROM sede s WHERE s.id_sede = sede;
 
 dbms_output.put_line('***********************************************');
 dbms_output.put_line('*   INICIO MODULO DE ASIGNACION DE VEHICULO   *');
 dbms_output.put_line('***********************************************');
-dbms_output.put_line('    ');
+dbms_output.put_line('*    ');
 cant_prod := cant_productos (id_pedido);
 dbms_output.put_line('Productos dentro del pedido: ' || cant_prod);
 cant_pedido := pedidos_direccion(proveedor,municipio,estado,fecha);
@@ -123,28 +105,71 @@ dbms_output.put_line('Existen: ' || cant_pedido || ' envios dentro de la misma z
         cant_unidad := cant_unidades_disp('camioneta',estado);
         dbms_output.put_line('Existen ' || cant_unidad || ' unidades de tipo camioneta disponibles');
         total_uni := total_unidades('camioneta',estado);
+        dbms_output.put_line('Total  ' || total_uni || ' unidades');
             IF cant_unidad > cant_pedido THEN
-                porc_unidades := total_uni*0.3
+                porc_unidades := total_uni*0.3;
                     IF cant_unidad >=  porc_unidades  THEN
-                        -- BUSCAR UNIDAD PARA ASIGNAR
+                        dbms_output.put_line('Se están buscando unidades de tipo camioneta dentro de la misma sede' );
+                        -- BUSCAR UNIDAD PARA ASIGNAR TIPO CAMIONETA
+                        -- ASIGNAR UNIDAD PARA ASIGNAR TIPO BICICLETA
+                        dbms_output.put_line('Se ha asignado la unidad' || nro_unidad);
                     ELSE
+                        dbms_output.put_line('No hay unidades disponibles se procederá a reponer unidades de tipo camioneta' );
                         -- SE EJECUTA MODULO DE REPOSICION DE UNIDADES
-                    THEN   
-
-
+                        nro_unidad := buscar_unidad(sede,'camioneta');
+                        -- BUSCAR UNIDAD PARA ASIGNAR TIPO CAMIONETA
+                        UPDATE ENVIO SET ID_UNIDAD = nro_unidad WHERE Tracking = id_pedido;
+                    END IF;  
             ELSE 
+                dbms_output.put_line('MODULO DE ENVIO RECURRENTES' );
                 -- SE EJECUTA MODULO DE ENVIOS CONCURECURRENTES
             END IF;
-
     ELSE 
         -- CALCULAR DISTANCIA
-        -- ASIGNAR MOTO
-        -- ASIGNAR BICICLETA
+            distancia := distancia_haversine(lat_us,lon_us,lat_sede,lon_sede);
+            IF distancia > 10 THEN
+                dbms_output.put_line('¿ Existen motos disponibles?');
+                cant_unidad := cant_unidades_disp('moto',estado);
+                dbms_output.put_line('Existen ' || cant_unidad || ' unidades de tipo moto disponibles');
+                total_uni := total_unidades('moto',estado);
+                dbms_output.put_line('Total  ' || total_uni || ' unidades');
+                porc_unidades := total_uni*0.3;
+                    IF cant_unidad >=  porc_unidades  THEN
+                        dbms_output.put_line('Se están buscando unidades de tipo moto dentro de la misma sede' );
+                        -- BUSCAR UNIDAD PARA ASIGNAR TIPO MOTO
+                        nro_unidad := buscar_unidad(sede,'moto');
+                        -- ASIGNAR UNIDAD PARA ASIGNAR TIPO MOTO
+                        dbms_output.put_line('Se ha asignado la unidad' || nro_unidad);
+                    ELSE
+                        dbms_output.put_line('No hay unidades disponibles se procederá a reponer unidades de tipo moto' );
+                        -- SE EJECUTA MODULO DE REPOSICION DE UNIDADES
+                        -- ASIGNAR UNIDAD PARA ASIGNAR TIPO MOTO
+                        UPDATE ENVIO SET ID_UNIDAD = nro_unidad WHERE Tracking = id_pedido;
+                    END IF;
+            ELSE
+                dbms_output.put_line('¿ Existen bicicletas disponibles?');
+                cant_unidad := cant_unidades_disp('bicicleta',estado);
+                dbms_output.put_line('Existen ' || cant_unidad || ' unidades de tipo bicicleta disponibles');
+                total_uni := total_unidades('bicicleta',estado);
+                dbms_output.put_line('Total  ' || total_uni || ' unidades');
+                porc_unidades := total_uni*0.3;
+                    IF cant_unidad >=  porc_unidades  THEN
+                        dbms_output.put_line('Se están buscando unidades de tipo bicicleta dentro de la misma sede' );
+                        -- BUSCAR UNIDAD PARA ASIGNAR TIPO BICICLETA
+                        nro_unidad := buscar_unidad(sede,'moto');
+                        -- ASIGNAR UNIDAD PARA ASIGNAR TIPO BICICLETA
+                        UPDATE ENVIO SET ID_UNIDAD = nro_unidad WHERE Tracking = id_pedido;
+                        dbms_output.put_line('Se ha asignado la unidad' || nro_unidad);
+                    ELSE
+                        dbms_output.put_line('No hay unidades disponibles se procederá a reponer unidades de tipo bicicleta' );
+                        -- SE EJECUTA MODULO DE REPOSICION DE UNIDADES
+                        -- ASIGNAR UNIDAD PARA ASIGNAR TIPO BICICLETA
+                        UPDATE ENVIO SET ID_UNIDAD = nro_unidad WHERE Tracking = id_pedido;
+                    END IF;
 
-        
+            END IF;
+       
     END IF;
-    
-
 END;
 
 
@@ -153,4 +178,13 @@ END;
 SET serveroutput ON
 BEGIN
 asignacion_de_vehiculo(1);
+END;
+
+-- PROBAR BUSCAR UNIDADES
+SET serveroutput ON
+DECLARE
+nro_unidad INT;
+BEGIN
+nro_unidad := buscar_unidad(1,'moto');
+dbms_output.put_line('Se ha asignado la unidad' || nro_unidad);
 END;
