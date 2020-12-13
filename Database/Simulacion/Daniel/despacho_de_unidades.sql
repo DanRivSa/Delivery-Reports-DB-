@@ -36,6 +36,15 @@ BEGIN
     RETURN (ROUND(distancia)); --en metros
 END;
 
+--funcion para generar numeros random
+CREATE OR REPLACE FUNCTION random_n(limite INT) RETURN INT 
+IS
+numero INT;
+BEGIN
+    SELECT dbms_random.value(1,limite) INTO numero FROM DUAL;
+    RETURN (numero);
+END;
+
 --Funcion para devovel el tiempo en minutos
 CREATE OR REPLACE FUNCTION tiempo_llegada(lato NUMBER, lono NUMBER, latd NUMBER, lond NUMBER, vel_promedio NUMBER) RETURN NUMBER
 IS
@@ -83,6 +92,10 @@ orilat NUMBER;
 orilon NUMBER;
 --envio
 tiempo NUMBER;
+punt INT;
+prov INT;
+max_id_val INT;
+nombre_prov VARCHAR(30);
 BEGIN
     dbms_output.put_line('***********************************************');
     dbms_output.put_line('*        MODULO DE DESPACHO DE UNIDADES       *');
@@ -94,6 +107,7 @@ BEGIN
     --unidad
     SELECT velocidad_promedio INTO vel_prom FROM unidad WHERE id_unidad = numero_placa;
     SELECT tipo_unidad INTO tipo_uni FROM unidad WHERE id_unidad = numero_placa;
+    dbms_output.put_line('unidad sale desde la sede del proveedor: '||nombre_prov);
     dbms_output.put_line('tipo de unidad: '||tipo_uni); --placa de la unidad (id)
     dbms_output.put_line('placa de unidad: '||numero_placa); --placa de la unidad (id)
     dbms_output.put_line('velocidad de la unidad: '||vel_prom * 100|| ' m/s');  --velocidad promedio de la unidad
@@ -112,6 +126,9 @@ BEGIN
         SELECT u.coordenadas_actuales.latitud, u.coordenadas_actuales.longitud INTO orilat,orilon FROM unidad u WHERE u.id_unidad = numero_placa;
         --seleccionar el id de envio
         SELECT id_envio INTO id_dinamico_envio FROM sucursal_asignada WHERE id_unidad = numero_placa AND ROWNUM = counter_env+ 1; 
+        --seleccionar proveedor
+        SELECT id_prov INTO prov FROM sucursal_asignada WHERE id_envio = id_dinamico_envio; 
+        SELECT prov.datos_prov.nombre_usuario INTO nombre_prov FROM proveedor prov WHERE prov.id_proveedor = prov;
         --seleccionar cantidad de sucursales para ese envio
         SELECT COUNT(id_suc) INTO cant_sucursales FROM sucursal_asignada WHERE id_envio = id_dinamico_envio; 
         --seleccionar id usuario e id de direccion para ese envio
@@ -181,14 +198,20 @@ BEGIN
             UPDATE unidad u SET u.coordenadas_actuales.latitud = latu, u.coordenadas_actuales.longitud = lonu WHERE u.id_unidad = numero_placa;
         END LOOP;
         dbms_output.put_line('*    ');
-        dbms_output.put_line('Entrega culminada');
+        dbms_output.put_line('Entrega culminada.');
         UPDATE envio env SET env.fechas.fecha_fin = SYSDATE; --culmina el envio 
         counter_env:= counter_env +1;
     END LOOP;
     --regresa la unidad a la sede
     UPDATE unidad u SET u.coordenadas_actuales.latitud = orilat, u.coordenadas_actuales.longitud = orilon WHERE u.id_unidad = numero_placa;
+    --genera valoracion
+    punt:= random_n(5);
+    SELECT MAX(id_valoracion) INTO max_id_val FROM valoracion; 
+    max_id_val := max_id_val +1;
+    INSERT INTO valoracion VALUES (max_id_val,prov,id_u,punt,historico(historico.Validar_fecha(SYSDATE),historico.Validar_fecha2(SYSDATE,SYSDATE)));
+    dbms_output.put_line('Usuario agrego valoracion: '||punt||' a proveedor '||nombre_prov);
+    dbms_output.put_line('FIN SIMULACION');
 END;
-
 
 -- EJECUCION DEL MODULO
 
