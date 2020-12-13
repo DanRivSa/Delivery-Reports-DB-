@@ -107,7 +107,6 @@ BEGIN
     --unidad
     SELECT velocidad_promedio INTO vel_prom FROM unidad WHERE id_unidad = numero_placa;
     SELECT tipo_unidad INTO tipo_uni FROM unidad WHERE id_unidad = numero_placa;
-    dbms_output.put_line('unidad sale desde la sede del proveedor: '||nombre_prov);
     dbms_output.put_line('tipo de unidad: '||tipo_uni); --placa de la unidad (id)
     dbms_output.put_line('placa de unidad: '||numero_placa); --placa de la unidad (id)
     dbms_output.put_line('velocidad de la unidad: '||vel_prom * 100|| ' m/s');  --velocidad promedio de la unidad
@@ -160,7 +159,7 @@ BEGIN
             sumlat := latud/10;
             sumlon := lonud/10;
             --5-) mover unidad y actualizar valores geograficos de la ubicacion de la unidad
-            dbms_output.put_line('Unidad '||numero_placa||' ha sido despachada a la sucursal correspondida al envio nro: '||id_dinamico_envio);
+            dbms_output.put_line('Unidad '||numero_placa||' ha sido despachada a la sucursal correspondida al envio nro: '||id_dinamico_envio||' desde la sede de proveedor: ' ||nombre_prov);
             dbms_output.put_line('coordenadas: ');
             dbms_output.put_line('*    ');
             WHILE latu != latd AND lonu != lond
