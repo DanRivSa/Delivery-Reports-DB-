@@ -1099,9 +1099,9 @@ INSERT INTO unidad VALUES (44,15,15,13,13,7,datos_lugar(10.12060918672306, -68.0
 INSERT INTO unidad VALUES (45,15,15,13,13,7,datos_lugar(10.12060918672306, -68.04428557370942),'bicicleta','v',15);
 
 
-UPDATE unidad SET velocidad_promedio = 22.22 WHERE tipo_unidad = 'camioneta';
-UPDATE unidad SET velocidad_promedio = 11.94 WHERE tipo_unidad = 'moto';
-UPDATE unidad SET velocidad_promedio = 4.16 WHERE tipo_unidad = 'bicicleta';
+UPDATE unidad SET velocidad_promedio = 2.22 WHERE tipo_unidad = 'camioneta';
+UPDATE unidad SET velocidad_promedio = 1.194 WHERE tipo_unidad = 'moto';
+UPDATE unidad SET velocidad_promedio = 0.416 WHERE tipo_unidad = 'bicicleta';
 
 
 

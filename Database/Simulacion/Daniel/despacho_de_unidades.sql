@@ -61,6 +61,7 @@ counter_sucursales INT;
 id_dinamico_sucursal INT;
 id_u INT;
 id_dire INT;
+tipo_uni VARCHAR2(25);
 app_username VARCHAR(30);
 c_cal_dir INT;
 calle VARCHAR(30);
@@ -83,12 +84,18 @@ orilon NUMBER;
 --envio
 tiempo NUMBER;
 BEGIN
+    dbms_output.put_line('***********************************************');
+    dbms_output.put_line('*        MODULO DE DESPACHO DE UNIDADES       *');
+    dbms_output.put_line('***********************************************');
+    dbms_output.put_line('*    ');
+    dbms_output.put_line('*    ');
     --inicializacion de variables
 
     --unidad
     SELECT velocidad_promedio INTO vel_prom FROM unidad WHERE id_unidad = numero_placa;
     dbms_output.put_line('placa de unidad: '||numero_placa); --placa de la unidad (id)
     dbms_output.put_line('velocidad de la unidad: '||vel_prom);  --velocidad promedio de la unidad
+    dbms_output.put_line('*    ');
 
     --cantidad de envios
     SELECT COUNT(id_envio) INTO cant_envios FROM sucursal_asignada WHERE id_unidad = numero_placa; --cantidad de envios
@@ -136,6 +143,7 @@ BEGIN
             --5-) mover unidad y actualizar valores geograficos de la ubicacion de la unidad
             dbms_output.put_line('Unidad '||numero_placa||' ha sido despachada a la sucursal correspondida al envio nro: '||id_dinamico_envio);
             dbms_output.put_line('coordenadas: ');
+            dbms_output.put_line('*    ');
             WHILE latu != latd AND lonu != lond
             LOOP
                 --calcular tiempo de llegada a la sucursal
@@ -147,9 +155,11 @@ BEGIN
                 --actualiza coordenadas en unidad
                 UPDATE unidad u SET u.coordenadas_actuales.latitud = latu, u.coordenadas_actuales.longitud = lonu WHERE u.id_unidad = numero_placa;
             END LOOP;
+            dbms_output.put_line('*    ');
             dbms_output.put_line('La unidad ha llegado a la sucursal '||id_dinamico_sucursal);
             counter_sucursales:= counter_sucursales +1;
         END LOOP;
+        dbms_output.put_line('*    ');
         dbms_output.put_line('La unidad ha pasado por las sucursales y ha sido despachada a ->  '||calle ||municipio || 'edo ' ||estado||', direccion del usuari@ '||app_username);
         --armar vector AB
         latud:=latusuario - latu;
@@ -168,10 +178,19 @@ BEGIN
             --actualiza coordenadas en unidad
             UPDATE unidad u SET u.coordenadas_actuales.latitud = latu, u.coordenadas_actuales.longitud = lonu WHERE u.id_unidad = numero_placa;
         END LOOP;
+        dbms_output.put_line('*    ');
         dbms_output.put_line('Entrega culminada');
         UPDATE envio env SET env.fechas.fecha_fin = SYSDATE; --culmina el envio 
         counter_env:= counter_env +1;
     END LOOP;
     --regresa la unidad a la sede
     UPDATE unidad u SET u.coordenadas_actuales.latitud = orilat, u.coordenadas_actuales.longitud = orilon WHERE u.id_unidad = numero_placa;
+END;
+
+
+-- EJECUCION DEL MODULO
+
+SET serveroutput ON
+BEGIN
+despacha_unidad(1);
 END;
