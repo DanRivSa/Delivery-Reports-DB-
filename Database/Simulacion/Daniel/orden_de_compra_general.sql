@@ -75,7 +75,7 @@ dbms_output.put_line('*    ');
 dbms_output.put_line('*    ');
 --generar productos en envio
 --select cantidad de productos de aliado comercial
-cant_productos:= ROUND(DBMS_RANDOM.VALUE(1,3));
+cant_productos:= ROUND(DBMS_RANDOM.VALUE(1,6));
 
 dbms_output.put_line('se le asignaran '||cant_productos||' al envio '||tracking_env);
 control_p := 0;
