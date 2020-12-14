@@ -58,6 +58,7 @@ END;
 CREATE OR REPLACE PROCEDURE asignacion_de_vehiculo (id_pedido INT) IS
 cant_pedido INT;
 cant_prod INT;
+asignado INT;
 -- UNIDADES
 cant_unidad INT;
 total_uni INT;
@@ -74,10 +75,10 @@ estado INT;
 municipio INT;
 distancia INT;
 -- latitudes y longitudes
-lat_sede  INT;
-lon_sede INT;
-lat_us INT;
-lon_us INT;
+lat_sede  NUMBER;
+lon_sede NUMBER;
+lat_us NUMBER;
+lon_us NUMBER;
 
 
 BEGIN 
@@ -132,12 +133,13 @@ dbms_output.put_line('Existen: ' || cant_pedido || ' envios dentro de la misma z
                 -- SE EJECUTA MODULO DE ENVIOS CONCURECURRENTES
             END IF;
     ELSE 
+        select id_unidad INTO asignado from envio where tracking = id_pedido;
         dbms_output.put_line('*' );
-        IF cant_pedido != 0 THEN
+        IF asignado IS NULL THEN
         -- CALCULAR DISTANCIA
             distancia := distancia_haversine(lat_sede,lon_sede,lat_us,lon_us);
-            dbms_output.put_line('distancia entre el usuario y la sede delivery: ' || distancia);
-            IF distancia > 10 THEN
+            dbms_output.put_line('distancia entre el usuario y la sede delivery: ' || distancia || ' metros');
+            IF distancia > 200 THEN
                 dbms_output.put_line('¿ Existen motos disponibles?');
                 cant_unidad := cant_unidades_disp('moto',estado);
                 dbms_output.put_line('Existen ' || cant_unidad || ' unidades de tipo moto disponibles');
