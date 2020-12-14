@@ -99,7 +99,7 @@ dbms_output.put_line('Productos dentro del pedido: ' || cant_prod);
 cant_pedido := pedidos_direccion(proveedor,municipio,estado,fecha);
 dbms_output.put_line('Existen: ' || cant_pedido || ' envios dentro de la misma zona de destino');
 
-    IF cant_pedido > 4 THEN
+    IF cant_prod > 4 THEN
         -- INICIO DE PROCESO DE ASIGNACION PARA TIPO CAMIONETA 
 
         dbms_output.put_line('Existen más de 4 envios dentro del mismo radio de distancia');
@@ -139,7 +139,7 @@ dbms_output.put_line('Existen: ' || cant_pedido || ' envios dentro de la misma z
         -- CALCULAR DISTANCIA
             distancia := distancia_haversine(lat_sede,lon_sede,lat_us,lon_us);
             dbms_output.put_line('distancia entre el usuario y la sede delivery: ' || distancia || ' metros');
-            IF distancia > 200 THEN
+            IF distancia > 150 THEN
                 dbms_output.put_line('¿ Existen motos disponibles?');
                 cant_unidad := cant_unidades_disp('moto',estado);
                 dbms_output.put_line('Existen ' || cant_unidad || ' unidades de tipo moto disponibles');

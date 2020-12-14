@@ -344,9 +344,9 @@ SELECT u.id_unidad INTO nro_unidadC from unidad u
 WHERE u.tipo_unidad = 'camioneta' and u.cod_municipio = municipio  AND  u.cod_estado = estado and u.id_sede = sede AND u.estado_unidad = 'v' AND ROWNUM =1;
                         
 
-dbms_output.put_line('Se ha asignado la unidad B ' || nro_unidadB);
-dbms_output.put_line('Se ha asignado la unidad M ' || nro_unidadM);
-dbms_output.put_line('Se ha asignado la unidad C ' || nro_unidadC);
+dbms_output.put_line('Se ha asignado la unidad Bicicleta ' || nro_unidadB);
+dbms_output.put_line('Se ha asignado la unidad Moto ' || nro_unidadM);
+dbms_output.put_line('Se ha asignado la unidad Camioneta ' || nro_unidadC);
 
 
 END;
