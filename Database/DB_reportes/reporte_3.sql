@@ -55,4 +55,4 @@ BEGIN
 
 END;
 
-{CALL reporte_4($P{ORACLE_REF_CURSOR}, $P{sector_comercio},$P{fecha_inicio},$P{fecha_fin},$P{codigo_estado})}
+{CALL reporte_3($P{ORACLE_REF_CURSOR}, $P{sector_comercio},$P{fecha_inicio},$P{fecha_fin},$P{codigo_estado})}
