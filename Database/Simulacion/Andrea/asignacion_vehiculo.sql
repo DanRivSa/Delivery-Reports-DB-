@@ -135,7 +135,7 @@ dbms_output.put_line('Existen: ' || cant_pedido || ' envios dentro de la misma z
         dbms_output.put_line('*' );
         IF cant_pedido != 0 THEN
         -- CALCULAR DISTANCIA
-            distancia := distancia_haversine(lat_us,lon_us,lat_sede,lon_sede);
+            distancia := distancia_haversine(lat_sede,lon_sede,lat_us,lon_us);
             dbms_output.put_line('distancia entre el usuario y la sede delivery: ' || distancia);
             IF distancia > 10 THEN
                 dbms_output.put_line('¿ Existen motos disponibles?');
