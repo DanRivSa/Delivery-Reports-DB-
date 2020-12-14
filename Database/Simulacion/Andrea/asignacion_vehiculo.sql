@@ -113,7 +113,7 @@ dbms_output.put_line('Existen: ' || cant_pedido || ' envios dentro de la misma z
                         dbms_output.put_line('Se están buscando unidades de tipo camioneta dentro de la misma sede' );
                         -- BUSCAR UNIDAD PARA ASIGNAR TIPO CAMIONETA
                         SELECT u.id_unidad INTO nro_unidad from unidad u 
-                        WHERE u.tipo_unidad = 'camioneta' and u.cod_municipio = municipio  AND  u.cod_estado = estado and u.id_sede = sede AND u.estado_unidad = 'v';
+                        WHERE u.tipo_unidad = 'camioneta' and u.cod_municipio = municipio  AND  u.cod_estado = estado and u.id_sede = sede AND u.estado_unidad = 'v' AND ROWNUM =1;
                         -- ASIGNAR UNIDAD PARA ASIGNAR TIPO camioneta
                         dbms_output.put_line('Se ha asignado la unidad:  ' || nro_unidad);
                         UPDATE ENVIO SET ID_UNIDAD = nro_unidad WHERE Tracking = id_pedido;
@@ -148,7 +148,7 @@ dbms_output.put_line('Existen: ' || cant_pedido || ' envios dentro de la misma z
                         dbms_output.put_line('Se están buscando unidades de tipo moto dentro de la misma sede' );
                         -- BUSCAR UNIDAD PARA ASIGNAR TIPO MOTO
                         SELECT u.id_unidad INTO nro_unidad from unidad u 
-                        WHERE u.tipo_unidad = 'moto' and u.cod_municipio = municipio  AND  u.cod_estado = estado and u.id_sede = sede AND u.estado_unidad = 'v';
+                        WHERE u.tipo_unidad = 'moto' and u.cod_municipio = municipio  AND  u.cod_estado = estado and u.id_sede = sede AND u.estado_unidad = 'v' AND ROWNUM =1;
                         -- ASIGNAR UNIDAD PARA ASIGNAR TIPO MOTO
                         dbms_output.put_line('Se ha asignado la unidad  ' || nro_unidad);
                         UPDATE ENVIO SET ID_UNIDAD = nro_unidad WHERE Tracking = id_pedido;
@@ -170,7 +170,7 @@ dbms_output.put_line('Existen: ' || cant_pedido || ' envios dentro de la misma z
                         dbms_output.put_line('Se están buscando unidades de tipo bicicleta dentro de la misma sede' );
                         -- BUSCAR UNIDAD PARA ASIGNAR TIPO BICICLETA
                         SELECT u.id_unidad INTO nro_unidad from unidad u 
-                        WHERE u.tipo_unidad = 'bicicleta' and u.cod_municipio = municipio  AND  u.cod_estado = estado and u.id_sede = sede AND u.estado_unidad = 'v';
+                        WHERE u.tipo_unidad = 'bicicleta' and u.cod_municipio = municipio  AND  u.cod_estado = estado and u.id_sede = sede AND u.estado_unidad = 'v' AND ROWNUM =1;
                         -- ASIGNAR UNIDAD PARA ASIGNAR TIPO BICICLETA
                         UPDATE ENVIO SET ID_UNIDAD = nro_unidad WHERE Tracking = id_pedido;
                         dbms_output.put_line('Se ha asignado la unidad  ' || nro_unidad);
