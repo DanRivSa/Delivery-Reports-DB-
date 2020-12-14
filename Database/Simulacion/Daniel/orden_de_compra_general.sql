@@ -91,7 +91,7 @@ LOOP
     --colocar envios en producto_envio
     dbms_output.put_line('producto '||id_prod||' agregado a envio '|| tracking_env);
     control_p:=control_p + 1;
-    INSERT INTO producto_envio(id_p_s,id_producto,id_al_com,tracking,id_acuerdo,id_usuario_envio,id_dir) VALUES (new_id,id_prod,id_ali,tacking_env,id_acuerdo_com,id_user,id_dire);
+    INSERT INTO producto_envio(id_p_s,id_producto,id_al_com,tracking,id_acuerdo,id_usuario_envio,id_dir) VALUES (new_id,id_prod,id_ali,tracking_env,id_acuerdo_com,id_user,id_dire);
 END LOOP;
 dbms_output.put_line('*    ');
 dbms_output.put_line('*    ');
