@@ -109,11 +109,11 @@ BEGIN
     SELECT tipo_unidad INTO tipo_uni FROM unidad WHERE id_unidad = numero_placa;
     dbms_output.put_line('tipo de unidad: '||tipo_uni); --placa de la unidad (id)
     dbms_output.put_line('placa de unidad: '||numero_placa); --placa de la unidad (id)
-    dbms_output.put_line('velocidad de la unidad: '||vel_prom * 100|| ' m/s');  --velocidad promedio de la unidad
+    dbms_output.put_line('velocidad de la unidad: '||vel_prom|| ' m/s');  --velocidad promedio de la unidad
     dbms_output.put_line('*    ');
 
     --cantidad de envios
-    SELECT COUNT(id_envio) INTO cant_envios FROM sucursal_asignada WHERE id_unidad = numero_placa; --cantidad de envios
+    SELECT COUNT(id_envio) INTO cant_envios FROM sucursal_asignada WHERE id_unidad = numero_placa AND ROWNUM = 1; --cantidad de envios
 
     --programa
 
@@ -129,7 +129,7 @@ BEGIN
         SELECT id_prov INTO prov FROM sucursal_asignada WHERE id_envio = id_dinamico_envio; 
         SELECT prov.datos_prov.nombre_usuario INTO nombre_prov FROM proveedor prov WHERE prov.id_proveedor = prov;
         --seleccionar cantidad de sucursales para ese envio
-        SELECT COUNT(id_suc) INTO cant_sucursales FROM sucursal_asignada WHERE id_envio = id_dinamico_envio; 
+        SELECT COUNT(id_suc) INTO cant_sucursales FROM sucursal_asignada WHERE id_envio = id_dinamico_envio AND ROWNUM = 1; 
         --seleccionar id usuario e id de direccion para ese envio
         SELECT id_usuario INTO id_u FROM sucursal_asignada WHERE id_envio = id_dinamico_envio;
         SELECT id_direccion INTO id_dire FROM sucursal_asignada WHERE id_envio = id_dinamico_envio;
