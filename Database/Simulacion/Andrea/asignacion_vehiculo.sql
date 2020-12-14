@@ -125,10 +125,15 @@ dbms_output.put_line('Existen: ' || cant_pedido || ' envios dentro de la misma z
                         UPDATE ENVIO SET ID_UNIDAD = nuevo_id_unidad WHERE Tracking = id_pedido;
                     END IF;  
             ELSE 
-                dbms_output.put_line('MODULO DE ENVIO RECURRENTES' );
+                dbms_output.put_line('La cantidad de envios sobrepasa la cantidad de unidades disponibles' );
+                dbms_output.put_line('*    ');
+                dbms_output.put_line('SE TRANSFIERE AL MODULO DE ENVIO RECURRENTES' );
+                envio_concurrente(id_pedido,sede,cant_pedido);
                 -- SE EJECUTA MODULO DE ENVIOS CONCURECURRENTES
             END IF;
     ELSE 
+        dbms_output.put_line('*' );
+        IF cant_pedido != 0 THEN
         -- CALCULAR DISTANCIA
             distancia := distancia_haversine(lat_us,lon_us,lat_sede,lon_sede);
             dbms_output.put_line('distancia entre el usuario y la sede delivery: ' || distancia);
@@ -145,7 +150,7 @@ dbms_output.put_line('Existen: ' || cant_pedido || ' envios dentro de la misma z
                         SELECT u.id_unidad INTO nro_unidad from unidad u 
                         WHERE u.tipo_unidad = 'moto' and u.cod_municipio = municipio  AND  u.cod_estado = estado and u.id_sede = sede AND u.estado_unidad = 'v';
                         -- ASIGNAR UNIDAD PARA ASIGNAR TIPO MOTO
-                        dbms_output.put_line('Se ha asignado la unidad' || nro_unidad);
+                        dbms_output.put_line('Se ha asignado la unidad  ' || nro_unidad);
                         UPDATE ENVIO SET ID_UNIDAD = nro_unidad WHERE Tracking = id_pedido;
                     ELSE
                         dbms_output.put_line('No hay unidades disponibles se procederá a reponer unidades de tipo moto' );
@@ -168,7 +173,7 @@ dbms_output.put_line('Existen: ' || cant_pedido || ' envios dentro de la misma z
                         WHERE u.tipo_unidad = 'bicicleta' and u.cod_municipio = municipio  AND  u.cod_estado = estado and u.id_sede = sede AND u.estado_unidad = 'v';
                         -- ASIGNAR UNIDAD PARA ASIGNAR TIPO BICICLETA
                         UPDATE ENVIO SET ID_UNIDAD = nro_unidad WHERE Tracking = id_pedido;
-                        dbms_output.put_line('Se ha asignado la unidad' || nro_unidad);
+                        dbms_output.put_line('Se ha asignado la unidad  ' || nro_unidad);
                     ELSE
                         dbms_output.put_line('No hay unidades disponibles se procederá a reponer unidades de tipo bicicleta' );
                         -- SE EJECUTA MODULO DE REPOSICION DE UNIDADES
@@ -178,7 +183,9 @@ dbms_output.put_line('Existen: ' || cant_pedido || ' envios dentro de la misma z
                     END IF;
 
             END IF;
-       
+        ELSE 
+            dbms_output.put_line('El envio ya tiene una unidad asignada' );
+        END IF;
     END IF;
 END;
 

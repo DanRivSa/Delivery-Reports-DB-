@@ -42,7 +42,8 @@ SELECT COUNT(*) INTO cant_usuarios FROM usuario;
 control_u := 0;
 WHILE control_u = 0
 LOOP
-    id_user := random_n(cant_usuarios);
+    select id_usuario INTO id_user from (select id_usuario from usuario ORDER BY DBMS_RANDOM.VALUE)
+    WHERE ROWNUM = 1;
     --seleccionar una direccion de envio asociada al usuario
     SELECT dir.id_direccion,dir.cod_es INTO id_dire,estado_dire FROM direccion dir WHERE dir.id_usuario_direccion = id_user;
     --seleccionar cantidad de acuerdos en estado de envio
@@ -74,7 +75,8 @@ dbms_output.put_line('*    ');
 dbms_output.put_line('*    ');
 --generar productos en envio
 --select cantidad de productos de aliado comercial
-cant_productos:= random_n(3);
+cant_productos:= ROUND(DBMS_RANDOM.VALUE(1,3));
+
 dbms_output.put_line('se le asignaran '||cant_productos||' al envio '||tracking_env);
 control_p := 0;
 dbms_output.put_line('************** INSERCION DE PRODUCTOS *******************');
