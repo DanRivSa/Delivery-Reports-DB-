@@ -41,17 +41,16 @@ RETURN num_unidades;
 END;
 
 CREATE OR REPLACE FUNCTION buscar_unidad (id_sede int, tipo_unidad VARCHAR2) RETURN number IS
-id_unidad INT;
+id_unidad NUMBER;
 id_estado INT;
 id_municipio INT;
 BEGIN 
-        select s.cod_mun,s.cod_es into id_municipio,id_estado from sede s where s.id_sede = id_sede; 
-        SELECT * INTO id_unidad FROM (
-        SELECT u.id_unidad from unidad u 
-        WHERE u.cod_municipio = id_municipio  AND  u.cod_estado = id_estado AND u.id_sede = id_sede 
-        AND u.estado_unidad = 'v'
-        ) WHERE ROWNUM =1; 
+        select s.cod_mun,s.cod_es into id_municipio,id_estado from sede s where s.id_sede = id_sede and rownum =1;
+        dbms_output.put_line('tipo de unidad: ' || tipo_unidad );
+        select * INTO id_unidad from (SELECT u.id_unidad  from unidad u 
+        WHERE u.tipo_unidad = tipo_unidad and u.cod_municipio = id_municipio  AND  u.cod_estado = id_estado and u.id_sede = id_sede AND u.estado_unidad = 'v') where rownum =1;  
         RETURN id_unidad;
+        
 END;
 
 -- INICIO DEL PROCEDIMIENTO PARA  ASIGNACIÓN DE VEHICULO 
@@ -64,6 +63,7 @@ cant_unidad INT;
 total_uni INT;
 porc_unidades INT;
 nro_unidad INT;
+nuevo_id_unidad INT;
 -- DATOS DE ENVIO
 id_usuario INT;
 proveedor int;
@@ -112,14 +112,17 @@ dbms_output.put_line('Existen: ' || cant_pedido || ' envios dentro de la misma z
                     IF cant_unidad >=  porc_unidades  THEN
                         dbms_output.put_line('Se están buscando unidades de tipo camioneta dentro de la misma sede' );
                         -- BUSCAR UNIDAD PARA ASIGNAR TIPO CAMIONETA
-                        -- ASIGNAR UNIDAD PARA ASIGNAR TIPO BICICLETA
-                        dbms_output.put_line('Se ha asignado la unidad' || nro_unidad);
+                        SELECT u.id_unidad INTO nro_unidad from unidad u 
+                        WHERE u.tipo_unidad = 'camioneta' and u.cod_municipio = municipio  AND  u.cod_estado = estado and u.id_sede = sede AND u.estado_unidad = 'v';
+                        -- ASIGNAR UNIDAD PARA ASIGNAR TIPO camioneta
+                        dbms_output.put_line('Se ha asignado la unidad:  ' || nro_unidad);
+                        UPDATE ENVIO SET ID_UNIDAD = nro_unidad WHERE Tracking = id_pedido;
                     ELSE
                         dbms_output.put_line('No hay unidades disponibles se procederá a reponer unidades de tipo camioneta' );
                         -- SE EJECUTA MODULO DE REPOSICION DE UNIDADES
-                        nro_unidad := buscar_unidad(sede,'camioneta');
+                            nuevo_id_unidad := reposicion_unidades('camioneta',sede);
                         -- BUSCAR UNIDAD PARA ASIGNAR TIPO CAMIONETA
-                        UPDATE ENVIO SET ID_UNIDAD = nro_unidad WHERE Tracking = id_pedido;
+                        UPDATE ENVIO SET ID_UNIDAD = nuevo_id_unidad WHERE Tracking = id_pedido;
                     END IF;  
             ELSE 
                 dbms_output.put_line('MODULO DE ENVIO RECURRENTES' );
@@ -128,6 +131,7 @@ dbms_output.put_line('Existen: ' || cant_pedido || ' envios dentro de la misma z
     ELSE 
         -- CALCULAR DISTANCIA
             distancia := distancia_haversine(lat_us,lon_us,lat_sede,lon_sede);
+            dbms_output.put_line('distancia entre el usuario y la sede delivery: ' || distancia);
             IF distancia > 10 THEN
                 dbms_output.put_line('¿ Existen motos disponibles?');
                 cant_unidad := cant_unidades_disp('moto',estado);
@@ -138,14 +142,17 @@ dbms_output.put_line('Existen: ' || cant_pedido || ' envios dentro de la misma z
                     IF cant_unidad >=  porc_unidades  THEN
                         dbms_output.put_line('Se están buscando unidades de tipo moto dentro de la misma sede' );
                         -- BUSCAR UNIDAD PARA ASIGNAR TIPO MOTO
-                        nro_unidad := buscar_unidad(sede,'moto');
+                        SELECT u.id_unidad INTO nro_unidad from unidad u 
+                        WHERE u.tipo_unidad = 'moto' and u.cod_municipio = municipio  AND  u.cod_estado = estado and u.id_sede = sede AND u.estado_unidad = 'v';
                         -- ASIGNAR UNIDAD PARA ASIGNAR TIPO MOTO
                         dbms_output.put_line('Se ha asignado la unidad' || nro_unidad);
+                        UPDATE ENVIO SET ID_UNIDAD = nro_unidad WHERE Tracking = id_pedido;
                     ELSE
                         dbms_output.put_line('No hay unidades disponibles se procederá a reponer unidades de tipo moto' );
                         -- SE EJECUTA MODULO DE REPOSICION DE UNIDADES
+                        nuevo_id_unidad := reposicion_unidades('moto',sede);
                         -- ASIGNAR UNIDAD PARA ASIGNAR TIPO MOTO
-                        UPDATE ENVIO SET ID_UNIDAD = nro_unidad WHERE Tracking = id_pedido;
+                        UPDATE ENVIO SET ID_UNIDAD = nuevo_id_unidad WHERE Tracking = id_pedido;
                     END IF;
             ELSE
                 dbms_output.put_line('¿ Existen bicicletas disponibles?');
@@ -157,15 +164,17 @@ dbms_output.put_line('Existen: ' || cant_pedido || ' envios dentro de la misma z
                     IF cant_unidad >=  porc_unidades  THEN
                         dbms_output.put_line('Se están buscando unidades de tipo bicicleta dentro de la misma sede' );
                         -- BUSCAR UNIDAD PARA ASIGNAR TIPO BICICLETA
-                        nro_unidad := buscar_unidad(sede,'moto');
+                        SELECT u.id_unidad INTO nro_unidad from unidad u 
+                        WHERE u.tipo_unidad = 'bicicleta' and u.cod_municipio = municipio  AND  u.cod_estado = estado and u.id_sede = sede AND u.estado_unidad = 'v';
                         -- ASIGNAR UNIDAD PARA ASIGNAR TIPO BICICLETA
                         UPDATE ENVIO SET ID_UNIDAD = nro_unidad WHERE Tracking = id_pedido;
                         dbms_output.put_line('Se ha asignado la unidad' || nro_unidad);
                     ELSE
                         dbms_output.put_line('No hay unidades disponibles se procederá a reponer unidades de tipo bicicleta' );
                         -- SE EJECUTA MODULO DE REPOSICION DE UNIDADES
+                        nuevo_id_unidad := reposicion_unidades('bicicleta',sede);
                         -- ASIGNAR UNIDAD PARA ASIGNAR TIPO BICICLETA
-                        UPDATE ENVIO SET ID_UNIDAD = nro_unidad WHERE Tracking = id_pedido;
+                        UPDATE ENVIO SET ID_UNIDAD = nuevo_id_unidad WHERE Tracking = id_pedido;
                     END IF;
 
             END IF;
