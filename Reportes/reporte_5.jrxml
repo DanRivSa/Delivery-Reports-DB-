@@ -4,9 +4,8 @@
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="system"/>
 	<parameter name="codigo_estado" class="java.lang.String"/>
-	<parameter name="codigo" class="java.lang.Integer"/>
 	<queryString language="plsql">
-		<![CDATA[{CALL reporte_5($P{ORACLE_REF_CURSOR}, $P{codigo_estado},$P{codigo})}]]>
+		<![CDATA[{CALL reporte_5($P{ORACLE_REF_CURSOR}, $P{codigo_estado})}]]>
 	</queryString>
 	<field name="ESTADO" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="ESTADO"/>
@@ -14,8 +13,14 @@
 	<field name="EMPRESA" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="EMPRESA"/>
 	</field>
+	<field name="LOGO_ALI" class="java.io.InputStream">
+		<property name="com.jaspersoft.studio.field.label" value="LOGO_ALI"/>
+	</field>
 	<field name="PROVEEDOR" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="PROVEEDOR"/>
+	</field>
+	<field name="LOGO_PROV" class="java.io.InputStream">
+		<property name="com.jaspersoft.studio.field.label" value="LOGO_PROV"/>
 	</field>
 	<field name="MUNICIPIO" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="MUNICIPIO"/>
@@ -26,21 +31,15 @@
 	<field name="ENVIOS" class="java.math.BigDecimal">
 		<property name="com.jaspersoft.studio.field.label" value="ENVIOS"/>
 	</field>
-	<field name="LOGO_ALI" class="java.io.InputStream">
-		<property name="com.jaspersoft.studio.field.label" value="LOGO_ALI"/>
-	</field>
-	<field name="LOGO_PROV" class="java.io.InputStream">
-		<property name="com.jaspersoft.studio.field.label" value="LOGO_PROV"/>
-	</field>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="50" splitType="Stretch">
+		<band height="88" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="0" width="572" height="50" uuid="b8a5b6da-a760-46df-92e8-a5b049848881"/>
+				<reportElement x="40" y="0" width="490" height="80" uuid="b8a5b6da-a760-46df-92e8-a5b049848881"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="HelvLight" size="22"/>
+					<font fontName="HelvLight" size="22" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Zonas top 5 de envíos a comercios a través de delivery]]></text>
 			</staticText>
