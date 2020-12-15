@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.13.0.final using JasperReports Library version 6.13.0-46ada4d1be8f3c5985fd0b6146f3ed44caed6f05  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporte_5" pageWidth="572" pageHeight="752" columnWidth="572" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="7c2d5a98-de3d-4c4f-8971-4eefa665694b">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="system"/>
+	<parameter name="codigo_estado" class="java.lang.String"/>
+	<parameter name="codigo" class="java.lang.Integer"/>
+	<queryString language="plsql">
+		<![CDATA[{CALL reporte_5($P{ORACLE_REF_CURSOR}, $P{codigo_estado},$P{codigo})}]]>
+	</queryString>
+	<field name="ESTADO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="ESTADO"/>
+	</field>
+	<field name="EMPRESA" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="EMPRESA"/>
+	</field>
+	<field name="PROVEEDOR" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="PROVEEDOR"/>
+	</field>
+	<field name="MUNICIPIO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="MUNICIPIO"/>
+	</field>
+	<field name="ID_DIRECCION" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="ID_DIRECCION"/>
+	</field>
+	<field name="ENVIOS" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="ENVIOS"/>
+	</field>
+	<field name="LOGO_ALI" class="java.io.InputStream">
+		<property name="com.jaspersoft.studio.field.label" value="LOGO_ALI"/>
+	</field>
+	<field name="LOGO_PROV" class="java.io.InputStream">
+		<property name="com.jaspersoft.studio.field.label" value="LOGO_PROV"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="50" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="572" height="50" uuid="b8a5b6da-a760-46df-92e8-a5b049848881"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="HelvLight" size="22"/>
+				</textElement>
+				<text><![CDATA[Zonas top 5 de envíos a comercios a través de delivery]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="32" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="1" width="571" height="31" backcolor="#008CFF" uuid="28c4807b-62bf-4d77-bc70-620ef7e0bf76"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="0" width="86" height="30" uuid="268163a4-4381-4c01-9c09-ca2ff878819f">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e8d7af25-4532-4690-aa6f-ac1c419527bc"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="HelvLight" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Estado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="86" y="0" width="81" height="30" uuid="7c1aa345-601a-46d7-bfa9-41b2743e849a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="fadf73e5-c559-4b71-ae44-e32134349819"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="HelvLight" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Empresa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="240" y="0" width="81" height="30" uuid="a20a4426-52be-4473-9dab-df7b67eedfec">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f0ad3c8a-f97b-4a0b-8a80-1f4587a2b32e"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="HelvLight" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Proveedor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="409" y="1" width="81" height="30" uuid="6df3873e-629c-4d9a-8016-8dda2d41b58b">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2e4d3ebc-3752-4c9f-b6eb-1968bcddc181"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="HelvLight" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Municipio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="490" y="1" width="81" height="30" uuid="6bda05e0-7674-4e9c-854f-ae37f99ab61a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="977d80d8-9002-436e-902e-c3e53a4e8c9d"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="HelvLight" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Envios]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="164" y="1" width="81" height="30" uuid="6bd872fa-d3f4-4fdf-8f81-915272d66165">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="47a7c92e-6083-4323-93b3-e84437bd9a91"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="HelvLight" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Empresa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="328" y="1" width="81" height="30" uuid="354932c6-e40f-4892-b19f-11408b132ee1">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a380bad7-de22-46c4-a589-c3bc01c37384"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="HelvLight" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Logo proveedor de servicio]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="73" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="13" width="86" height="30" uuid="f17debee-1371-4bea-8c94-041b57ae48f1">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e8d7af25-4532-4690-aa6f-ac1c419527bc"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="HelvLight"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ESTADO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="88" y="13" width="81" height="30" uuid="14fd212c-869b-436c-ab44-5a737c255c4c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="fadf73e5-c559-4b71-ae44-e32134349819"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="HelvLight"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{EMPRESA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="240" y="13" width="81" height="30" uuid="4f1e2635-c620-4a9e-b928-eafc98c3121c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f0ad3c8a-f97b-4a0b-8a80-1f4587a2b32e"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="HelvLight"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PROVEEDOR}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="409" y="14" width="81" height="30" uuid="63b72284-cbea-4888-894a-9453b5eabd97">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2e4d3ebc-3752-4c9f-b6eb-1968bcddc181"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="HelvLight"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{MUNICIPIO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="490" y="14" width="81" height="30" uuid="352eadfa-8747-4328-8e6c-1dce9f0af928">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="977d80d8-9002-436e-902e-c3e53a4e8c9d"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="HelvLight"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ENVIOS}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="180" y="5" width="50" height="50" uuid="6d789a61-5862-4b88-a104-dbf88df756be"/>
+				<imageExpression><![CDATA[$F{LOGO_ALI}]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="338" y="5" width="50" height="50" uuid="99951a08-88cc-4db0-b765-0a83bbc1fde2"/>
+				<imageExpression><![CDATA[$F{LOGO_PROV}]]></imageExpression>
+			</image>
+			<line>
+				<reportElement x="0" y="60" width="571" height="1" uuid="d59b6e31-ff5a-4940-9cbd-6da45f72f460"/>
+			</line>
+			<line>
+				<reportElement x="494" y="-31" width="1" height="91" uuid="7db4e9fa-927b-4456-8c39-7c5ed752d9a8"/>
+			</line>
+			<line>
+				<reportElement x="408" y="-30" width="1" height="91" uuid="768dad12-0429-4011-b2bb-e0d040ae2627"/>
+			</line>
+			<line>
+				<reportElement x="320" y="-30" width="1" height="91" uuid="af7a14a8-efe4-44a8-b4c4-55cd5db1a2e5"/>
+			</line>
+			<line>
+				<reportElement x="240" y="-30" width="1" height="91" uuid="b81754be-93a6-4b89-b2dc-fda8cee190c4"/>
+			</line>
+			<line>
+				<reportElement x="170" y="-30" width="1" height="91" uuid="bce0fe6a-60db-4b55-b08d-a574704c9e3e"/>
+			</line>
+			<line>
+				<reportElement x="86" y="-29" width="1" height="91" uuid="3fed1395-4bec-440b-86ff-d2483b65b18d"/>
+			</line>
+		</band>
+	</detail>
+</jasperReport>
