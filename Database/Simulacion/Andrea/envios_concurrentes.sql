@@ -46,11 +46,19 @@ dbms_output.put_line('*    ');
             INSERT INTO unidad VALUES 
             (id_unidad+cont_id,sede,id_prov,cod_calle,cod_municipio,cod_estado,
             datos_lugar(lat,lon),'moto','v',velocidad);
-            dbms_output.put_line('Se ha adquirido la unidad # ' || id_unidad+cont_id || ' en la sede ' || sede || ' De tipo moto' );
             cont_id := cont_id+1;
         END LOOP;
 
             RETURN id_unidad+cont_id;
     END IF;
     
+END;
+
+
+SET serveroutput ON
+DECLARE
+nro_unidad INT;
+BEGIN
+nro_unidad := envio_concurrente2(1,1,3);
+dbms_output.put_line('Se ha asignado la unidad ' || nro_unidad);
 END;
