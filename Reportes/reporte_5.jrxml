@@ -3,9 +3,9 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporte_5" pageWidth="572" pageHeight="752" columnWidth="572" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="7c2d5a98-de3d-4c4f-8971-4eefa665694b">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="system"/>
-	<parameter name="codigo_estado" class="java.lang.String"/>
+	<parameter name="Nombre_estado" class="java.lang.String"/>
 	<queryString language="plsql">
-		<![CDATA[{CALL reporte_5($P{ORACLE_REF_CURSOR}, $P{codigo_estado})}]]>
+		<![CDATA[{CALL reporte_5($P{ORACLE_REF_CURSOR}, $P{Nombre_estado})}]]>
 	</queryString>
 	<field name="ESTADO" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="ESTADO"/>

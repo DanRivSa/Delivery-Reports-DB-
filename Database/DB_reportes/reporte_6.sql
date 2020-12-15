@@ -44,7 +44,7 @@ END;
 
 
 
-{CALL reporte_6($P{ORACLE_REF_CURSOR},$P{codigo_estado},$P{fecha_inicio})}
+{CALL reporte_6($P{ORACLE_REF_CURSOR},$P{nombre_estado},$P{fecha_inicio})}
 
 --CODIGO_ESTADO ES STRING
 -- FECHA INICIO ES DATE

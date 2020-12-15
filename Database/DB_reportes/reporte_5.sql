@@ -41,3 +41,5 @@ WHERE E. Nombre = estado AND rownum < 5
 order by Envios desc;
 
 END;
+
+{CALL reporte_5($P{ORACLE_REF_CURSOR}, $P{Nombre_estado})}

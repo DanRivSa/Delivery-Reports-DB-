@@ -4,9 +4,9 @@
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="system"/>
 	<parameter name="fecha_inicio" class="java.sql.Date"/>
-	<parameter name="codigo_estado" class="java.lang.String"/>
+	<parameter name="Nombre_estado" class="java.lang.String"/>
 	<queryString language="plsql">
-		<![CDATA[{CALL reporte_6($P{ORACLE_REF_CURSOR},$P{codigo_estado},$P{fecha_inicio})}]]>
+		<![CDATA[{CALL reporte_6($P{ORACLE_REF_CURSOR},$P{Nombre_estado},$P{fecha_inicio})}]]>
 	</queryString>
 	<field name="ID_USUARIO" class="java.math.BigDecimal">
 		<property name="com.jaspersoft.studio.field.label" value="ID_USUARIO"/>
