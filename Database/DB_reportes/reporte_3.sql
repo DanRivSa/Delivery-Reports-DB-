@@ -39,7 +39,7 @@ BEGIN
     fecha_ini as fecha_inicio, --rango fecha inicio de parametro
     fecha_fin as fecha_fin,-- rango fecha fin de parametro
     es.nombre as Estado,
-    (SELECT COUNT(*) FROM envio v WHERE v.fechas.fecha_fin BETWEEN to_date('01-01-2020','DD-MM-YYYY') AND to_date('24-12-2020','DD-MM-YYYY') AND v.id_prov_u = prov.id_proveedor AND v.id_aliado = al_com.id_aliado ) as Cantidad_envios
+    (SELECT COUNT(*) FROM envio v WHERE v.fechas.fecha_fin BETWEEN fecha_ini AND fecha_fin AND v.id_prov_u = prov.id_proveedor AND v.id_aliado = al_com.id_aliado ) as Cantidad_envios
     from aliado_comercial al_com
     INNER JOIN acuerdo_servicio ac ON ac.id_aliado = al_com.id_aliado
     INNER JOIN proveedor prov ON prov.id_proveedor = ac.id_prov_serv
