@@ -1,5 +1,7 @@
 -- MODULO DE ENVIOS CONCURRENTES
 
+-- MODULO DE ENVIOS CONCURRENTES
+
 CREATE OR REPLACE FUNCTION envio_concurrente2 (id_pedido INT, sede INT,cant_pedido INT) RETURN NUMBER is
 total_uni INT;
 id_sede INT;
@@ -45,7 +47,7 @@ dbms_output.put_line('*    ');
         LOOP 
             INSERT INTO unidad VALUES 
             (id_unidad+cont_id,sede,id_prov,cod_calle,cod_municipio,cod_estado,
-            datos_lugar(lat,lon),'moto','v',velocidad);
+            datos_lugar(lat,lon),'moto','v',0.1194);
             cont_id := cont_id+1;
         END LOOP;
 
