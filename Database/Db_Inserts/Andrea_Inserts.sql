@@ -536,6 +536,8 @@ INSERT INTO SERVICIO VALUES(25,100,NULL,14);
 
 INSERT INTO SERVICIO VALUES(26,100,NULL,15);
 
+INSERT INTO SERVICIO VALUES(27,200,NULL,3);
+
 
 
 
@@ -553,6 +555,10 @@ INSERT INTO ACUERDO_SERVICIO VALUES
 
 INSERT INTO ACUERDO_SERVICIO VALUES
 (4,'MES',300,4,7,4,historico(historico.Validar_fecha('11-11-2020'),historico.Validar_fecha2('11-11-2020','11-11-2021')) );
+
+
+INSERT INTO ACUERDO_SERVICIO VALUES
+(16,'MES',200,3,27,4,historico(historico.Validar_fecha('12-11-2020'),historico.Validar_fecha2('12-11-2020','12-11-2021')) );
 
 INSERT INTO ACUERDO_SERVICIO VALUES
 (5,'MES',60,5,9,13,historico(historico.Validar_fecha('13-02-2020'),historico.Validar_fecha2('13-02-2020','13-02-2021')) );
@@ -645,6 +651,7 @@ historico(historico.Validar_fecha(TO_DATE('14-05-2020','DD-MM-YYYY')),NULL),NULL
 INSERT INTO ENVIO VALUES (15,8,8,7,9,9,11,17,'Hotel las rosas',
 historico(historico.Validar_fecha(TO_DATE('12-11-2020','DD-MM-YYYY')),NULL),NULL,NULL,NULL
 );
+
 
 
 -- SUCURSALES EXTRA
