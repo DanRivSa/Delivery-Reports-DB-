@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.13.0.final using JasperReports Library version 6.13.0-46ada4d1be8f3c5985fd0b6146f3ed44caed6f05  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporte_6" pageWidth="572" pageHeight="752" columnWidth="572" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="b8d1e4a8-fa75-4732-9678-17139f2bf09c">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="system"/>
+	<parameter name="fecha_inicio" class="java.sql.Date"/>
+	<parameter name="codigo_estado" class="java.lang.String"/>
+	<queryString language="plsql">
+		<![CDATA[{CALL reporte_6($P{ORACLE_REF_CURSOR},$P{codigo_estado},$P{fecha_inicio})}]]>
+	</queryString>
+	<field name="ID_USUARIO" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="ID_USUARIO"/>
+	</field>
+	<field name="FOTO" class="java.io.InputStream">
+		<property name="com.jaspersoft.studio.field.label" value="FOTO"/>
+	</field>
+	<field name="PRIMERNOMBRE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="PRIMERNOMBRE"/>
+	</field>
+	<field name="SEGUNDONOMBRE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="SEGUNDONOMBRE"/>
+	</field>
+	<field name="PRIMERAPELLIDO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="PRIMERAPELLIDO"/>
+	</field>
+	<field name="SEGUNDOAPELLIDO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="SEGUNDOAPELLIDO"/>
+	</field>
+	<field name="EMAIL" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="EMAIL"/>
+	</field>
+	<field name="PROVEEDOR" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="PROVEEDOR"/>
+	</field>
+	<field name="APLICACION" class="java.io.InputStream">
+		<property name="com.jaspersoft.studio.field.label" value="APLICACION"/>
+	</field>
+	<field name="CLIENTEDESDE" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="CLIENTEDESDE"/>
+	</field>
+	<field name="ESTADO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="ESTADO"/>
+	</field>
+	<field name="DIRECCIONENVIO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="DIRECCIONENVIO"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="50" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="572" height="50" uuid="2640c425-699f-4606-98e7-fd96c282142c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="HelvLight" size="22" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Usuarios registrados]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="40" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="572" height="40" backcolor="rgba(0, 140, 255, 0.8039216)" uuid="2502e1d1-74ea-45d6-b827-f8207ce5524c"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="0" width="55" height="30" uuid="a4555440-8d6e-4adf-9181-cd1763b4a78b">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="aef0292a-7554-4c7a-985d-0c989b028ffa"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="HelvLight" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Cedula]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="55" y="0" width="47" height="30" uuid="096d2e55-7797-442c-acde-fbe405b08708">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2bf242aa-f5ae-4d6b-96a9-6fb318d191e5"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="HelvLight" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Foto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="102" y="0" width="47" height="30" uuid="1295a478-959f-49bd-844a-962845fa399c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3b72f735-32dd-4d1f-b1a1-37a0b4303a7c"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="HelvLight" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Primer Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="149" y="0" width="47" height="30" uuid="f998c94f-0991-496e-9b87-ff2c00c8e0b5">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1c586d00-1f78-4b00-bbe1-bb4eab1e7529"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="HelvLight" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Segundo Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="196" y="0" width="47" height="30" uuid="d43e4c42-9c10-4e52-b5e5-cb43d55614c6">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d534a3ad-74ad-466f-92e2-a3eed60233ed"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="HelvLight" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Primer apellido]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="243" y="0" width="47" height="30" uuid="d6dbfef9-fa71-4a4e-9b4d-a470ae078ef6">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="da43d4d4-7efa-4fa2-ae00-844c28266ba2"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="HelvLight" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Segundo Apellido]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="290" y="0" width="47" height="30" uuid="b1a36a0d-991b-4b82-9271-6f28470836f8">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="60337af6-0428-4844-98b7-d5614bbdf256"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="HelvLight" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Email]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="337" y="0" width="47" height="30" uuid="20cf989b-1620-4167-bc3b-94ce2c2c2ac0">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="046dbbc9-4cb9-4cf1-b8c3-b60b64ec3b77"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="HelvLight" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Aplicación Registrada]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="384" y="0" width="47" height="30" uuid="2c4f26a3-218f-4607-9403-bfcdf2fe1d17">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ba15237a-3e84-428d-b2ff-4f856a626780"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="HelvLight" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="431" y="0" width="47" height="30" uuid="92286437-d16e-4eb9-91cb-f45638f0a23d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="53080e5a-0f51-45a7-bf0e-d713c5471930"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="HelvLight" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Cliente desde]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="478" y="0" width="47" height="30" uuid="abd06ebd-bc9b-43a2-b7e4-fe7810cf39f5">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="05d157f9-b61a-439b-b6c6-5c2af2675783"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="HelvLight" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Estado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="525" y="0" width="47" height="30" uuid="7241f37d-5208-4420-9361-e72c0c920dcc">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="263cc470-55c0-40ac-9bb4-d21eb1dd1cf7"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="HelvLight" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Dirección de envio]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="57" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="9" width="55" height="30" uuid="53d4564c-ee2c-4b7a-8bb4-f5009c9a4496">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="aef0292a-7554-4c7a-985d-0c989b028ffa"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="HelvLight"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ID_USUARIO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="102" y="9" width="47" height="30" uuid="853f5e57-e70a-40ab-aef8-ed4e76a896c7">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3b72f735-32dd-4d1f-b1a1-37a0b4303a7c"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="HelvLight"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PRIMERNOMBRE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="149" y="9" width="47" height="30" uuid="127e712a-75ea-4e07-bbcc-83150a5a6a59">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1c586d00-1f78-4b00-bbe1-bb4eab1e7529"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="HelvLight"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SEGUNDONOMBRE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="196" y="9" width="47" height="30" uuid="a37041ec-4834-4638-9aef-5e5a0cba8810">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d534a3ad-74ad-466f-92e2-a3eed60233ed"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="HelvLight"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PRIMERAPELLIDO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="243" y="9" width="47" height="30" uuid="027b6b80-f54b-4b3a-add1-dfa5fcf8ffcf">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="da43d4d4-7efa-4fa2-ae00-844c28266ba2"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="HelvLight"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SEGUNDOAPELLIDO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="290" y="9" width="47" height="30" uuid="be48fe64-0b86-4342-8d18-b8baae9e40b4">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="60337af6-0428-4844-98b7-d5614bbdf256"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="HelvLight"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{EMAIL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="337" y="9" width="47" height="30" uuid="ad93ad01-b39e-4d4f-856c-c18fca75d7d9">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="046dbbc9-4cb9-4cf1-b8c3-b60b64ec3b77"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="HelvLight"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PROVEEDOR}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="431" y="9" width="47" height="30" uuid="c0b44228-81c2-4f7e-88c8-9b5bc79c6e01">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="53080e5a-0f51-45a7-bf0e-d713c5471930"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="HelvLight"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CLIENTEDESDE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="478" y="9" width="47" height="30" uuid="2d96168e-cc6d-44cb-ba78-952f0c87d187">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="05d157f9-b61a-439b-b6c6-5c2af2675783"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="HelvLight"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ESTADO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="525" y="9" width="47" height="30" uuid="c0926e99-9374-4d8a-8838-3ad3390fb6ce">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="263cc470-55c0-40ac-9bb4-d21eb1dd1cf7"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="HelvLight"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DIRECCIONENVIO}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="390" y="4" width="36" height="40" uuid="f4822005-313c-463b-a1a7-1a19ca35000c"/>
+				<imageExpression><![CDATA[$F{APLICACION}]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="59" y="4" width="41" height="40" uuid="351cd758-37da-4f1f-a52e-3bbc910c7452"/>
+				<imageExpression><![CDATA[$F{FOTO}]]></imageExpression>
+			</image>
+			<line>
+				<reportElement x="1" y="50" width="571" height="1" uuid="b25ff1ce-ed12-4993-8e54-0d6b492d40d4"/>
+			</line>
+			<line>
+				<reportElement x="55" y="-40" width="1" height="90" uuid="528ea6fe-63cf-4e55-b14f-fb97f9f38934"/>
+			</line>
+			<line>
+				<reportElement x="102" y="-40" width="1" height="90" uuid="d8f606da-ad20-4193-997a-ad9e147be95b"/>
+			</line>
+			<line>
+				<reportElement x="148" y="-40" width="1" height="90" uuid="fea03fd6-ff42-4e40-bfb7-3d0dade4a9cb"/>
+			</line>
+			<line>
+				<reportElement x="196" y="-40" width="1" height="90" uuid="683b3290-6f60-4fd8-85e6-894e4e6a5c9b"/>
+			</line>
+			<line>
+				<reportElement x="242" y="-40" width="1" height="90" uuid="f57bdf9b-1d9d-460f-bbda-511860285158"/>
+			</line>
+			<line>
+				<reportElement x="290" y="-40" width="1" height="90" uuid="053cbf2d-94d7-46fb-b56d-c2b272f8a313"/>
+			</line>
+			<line>
+				<reportElement x="337" y="-40" width="1" height="90" uuid="3f50931f-0d06-470f-92af-fb0d51b38736"/>
+			</line>
+			<line>
+				<reportElement x="384" y="-40" width="1" height="90" uuid="26ac767d-1898-4cee-8e90-bd3cc1332619"/>
+			</line>
+			<line>
+				<reportElement x="431" y="-40" width="1" height="90" uuid="b5f04aba-c784-4349-bc6e-57a186828c30"/>
+			</line>
+			<line>
+				<reportElement x="478" y="-40" width="1" height="90" uuid="2aff0c0d-04ec-41d9-ba43-3c4cac7c5821"/>
+			</line>
+			<line>
+				<reportElement x="525" y="-40" width="1" height="90" uuid="b32d7d5b-3c49-4d12-acc8-6c3dba3c615a"/>
+			</line>
+		</band>
+	</detail>
+</jasperReport>

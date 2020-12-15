@@ -48,7 +48,7 @@
 			<staticText>
 				<reportElement x="0" y="0" width="555" height="51" uuid="22d0a3cd-cba2-4fed-a23b-0562cb9c6e13"/>
 				<textElement textAlignment="Center">
-					<font fontName="Serif" size="29"/>
+					<font fontName="HelvLight" size="29"/>
 				</textElement>
 				<text><![CDATA[Empresas aliadas]]></text>
 			</staticText>
@@ -57,41 +57,55 @@
 	<columnHeader>
 		<band height="46" splitType="Stretch">
 			<rectangle>
-				<reportElement x="0" y="0" width="555" height="40" backcolor="rgba(0, 208, 255, 0.5294118)" uuid="808203c9-951e-4da7-b74a-9c98b133d188"/>
+				<reportElement x="0" y="0" width="555" height="40" backcolor="#008CFF" uuid="808203c9-951e-4da7-b74a-9c98b133d188"/>
 			</rectangle>
 			<staticText>
 				<reportElement x="0" y="0" width="60" height="40" uuid="69019b95-3ec0-47c6-a008-0e6296100981"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="HelvLight" isBold="true"/>
+				</textElement>
 				<text><![CDATA[Logo]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="190" y="0" width="40" height="40" uuid="8fbbb2a2-469d-4808-8cdb-cdf6cebfcebb"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="HelvLight" isBold="true"/>
+				</textElement>
 				<text><![CDATA[Fecha de registro]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="240" y="0" width="67" height="40" uuid="e997e927-d0ef-410c-b492-f38d872a3eff"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<reportElement x="243" y="0" width="67" height="40" uuid="e997e927-d0ef-410c-b492-f38d872a3eff"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="HelvLight" isBold="true"/>
+				</textElement>
 				<text><![CDATA[Aplicación registrada para delivery]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="314" y="0" width="50" height="40" uuid="2cba28eb-0f0a-451a-b4b6-8023ff5daa58"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="HelvLight" isBold="true"/>
+				</textElement>
 				<text><![CDATA[Fecha desde]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="376" y="0" width="40" height="40" uuid="4630b2fb-4565-4ff0-8a72-95aa783a3250"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="HelvLight" isBold="true"/>
+				</textElement>
 				<text><![CDATA[Fecha hasta]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="421" y="0" width="60" height="40" uuid="cad1798c-a3ac-43c9-a648-8f17365af78f"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="HelvLight" isBold="true"/>
+				</textElement>
 				<text><![CDATA[Estado en donde hace delivery]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="490" y="0" width="65" height="40" uuid="5c94d26a-0f93-4ed6-b760-fe93d0003168"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="HelvLight" isBold="true"/>
+				</textElement>
 				<text><![CDATA[Monto contrato]]></text>
 			</staticText>
 			<line>
@@ -114,7 +128,9 @@
 			</line>
 			<staticText>
 				<reportElement x="60" y="0" width="50" height="40" uuid="f75b6675-bff8-47aa-a911-6848e661f084"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="HelvLight" isBold="true"/>
+				</textElement>
 				<text><![CDATA[Sector]]></text>
 			</staticText>
 			<line>
@@ -125,7 +141,9 @@
 			</line>
 			<staticText>
 				<reportElement x="110" y="0" width="70" height="40" uuid="9d8896a1-6d25-4489-852a-dedafbd6cc40"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="HelvLight" isBold="true"/>
+				</textElement>
 				<text><![CDATA[Nombre de la empresa]]></text>
 			</staticText>
 		</band>
@@ -139,56 +157,72 @@
 				<reportElement x="60" y="10" width="50" height="30" uuid="18d0edee-ac9d-4cb2-81bd-ceebd8279e65">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c461ab78-ea29-4243-9ae2-417b48efcf0d"/>
 				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="HelvLight"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{SECTOR}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="111" y="10" width="70" height="30" uuid="a854c25c-6323-4c48-ba1b-fbf9b6443188">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="72af7e9a-e0a8-42f9-ac94-9f7ce787d36b"/>
 				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="HelvLight"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{NOMBRE}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="422" y="10" width="59" height="30" uuid="d91a08c7-a788-4b38-87d1-2492f8f25274">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="47a17afb-b981-4cb6-9d3e-530cdb135732"/>
 				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="HelvLight"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{ESTADO_NOMBRE}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="240" y="10" width="73" height="30" uuid="c7ebbf0d-e0bb-4d87-9dde-b54840e1c54f">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4c8fb037-e753-4208-b232-977d3fa3ce83"/>
 				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="HelvLight"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{EMPRESA_DELIVERY}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="314" y="10" width="59" height="30" uuid="a05583b0-1e5a-4b06-a047-79c72c841b9e">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a69f997f-aacd-4646-9f1d-cd9a148eb672"/>
 				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="HelvLight"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{FECHA_INICIO}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="181" y="10" width="59" height="30" uuid="9c2d786d-ee15-4287-954c-7596d27a103b">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a69f997f-aacd-4646-9f1d-cd9a148eb672"/>
 				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="HelvLight"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{FECHA_INICIO}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="373" y="10" width="49" height="30" uuid="e9fffb35-efea-4e11-8c02-6b6a705e1e56">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9e6783f4-512f-4c41-92b8-26cf0e027a27"/>
 				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="HelvLight"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{FECHA_FIN}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="484" y="10" width="71" height="30" uuid="32b04802-9d2c-4a24-b194-39369a1a77d9">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1eb62a25-9684-4757-acad-8d0669839682"/>
 				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="HelvLight"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{EMPRESA_DELIVERY} +":   $"+$F{PRECIO_AS}  + " / " + $F{TIEMPO_CALCULO}]]></textFieldExpression>
 			</textField>
 			<image>
