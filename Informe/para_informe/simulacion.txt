@@ -1,0 +1,178 @@
+--EJECUCION DE MODULO DE NUEVO PROVEEDOR
+BEGIN
+nuevo_proveedor('simulacion_prov_1','simulacion@algo.com','01-01-2020','01-01-2021');
+END;
+
+--LOG
+
+***********************************************
+*     INICIO MODULO DE NUEVOS PROVEEDORES     *
+***********************************************
+*    
+1-) se inserto nuevo proveedor en la tabla, id: 17, nombre: simulacion_prov_1y correo: simulacion@algo.com
+2-) se agrego un nuevo servicio al nuevo proveedor, id: 29, cantidad de envios mensuales: 333, sin oferta
+3-) se inserto sede de id: 17en tabla, id_calle: 19, id_municipio: 19id_estado: 10, con coordenada de prueba (8.639846221406565,-70.23667000130578)
+se insertaron 3 unidades en la sede 17, proveedor 17
+4-) se creo acuerdo con aliado: 5 con de 100$ mensuales, contratando el servicio 29 del proveedor 17 acuerdo vigente: 01-01-2020-01-01-2021
+FIN MODULO DE PROVEEDORES NUEVOS
+
+
+PL/SQL procedure successfully completed.
+
+
+
+
+--EJECUCION DE MODULO DESPACHO UNIDAD
+BEGIN
+despacha_unidad(15);
+END;
+
+--LOG
+
+***********************************************
+*        MODULO DE DESPACHO DE UNIDADES       *
+***********************************************
+*    
+*    
+tipo de unidad: bicicleta
+placa de unidad: 15
+velocidad de la unidad: 4.16 m/s
+*    
+Unidad 15 ha sido despachada a la sucursal correspondida al envio nro: 20 desde la sede de proveedor: Delivery Food VE
+coordenadas: 
+*    
+(10.2178563581770506,-67.58473042099072) -> llegada en: 3 minuto(s)
+(10.2181386334143172,-67.58626684594558) -> llegada en: 3 minuto(s)
+(10.2184209086515838,-67.58780327090044) -> llegada en: 3 minuto(s)
+(10.2187031838888504,-67.5893396958553) -> llegada en: 2 minuto(s)
+(10.218985459126117,-67.59087612081016) -> llegada en: 2 minuto(s)
+(10.2192677343633836,-67.59241254576502) -> llegada en: 2 minuto(s)
+(10.2195500096006502,-67.59394897071988) -> llegada en: 1 minuto(s)
+(10.2198322848379168,-67.59548539567474) -> llegada en: 1 minuto(s)
+(10.2201145600751834,-67.5970218206296) -> llegada en: 1 minuto(s)
+(10.22039683531245,-67.59855824558446) -> llegada en: 0 minuto(s)
+*    
+La unidad ha llegado a la sucursal 13
+*    
+La unidad ha pasado por las sucursales y ha sido despachada a ->  Bermudez municipio Girardot edo. Aragua, direccion del usuari@ Marco
+(10.2219814873231177,-67.59824962406543) -> llegada en: 4 minuto(s)
+(10.2235661393337854,-67.5979410025464) -> llegada en: 3 minuto(s)
+(10.2251507913444531,-67.59763238102737) -> llegada en: 3 minuto(s)
+(10.2267354433551208,-67.59732375950834) -> llegada en: 3 minuto(s)
+(10.2283200953657885,-67.59701513798931) -> llegada en: 2 minuto(s)
+(10.2299047473764562,-67.59670651647028) -> llegada en: 2 minuto(s)
+(10.2314893993871239,-67.59639789495125) -> llegada en: 1 minuto(s)
+(10.2330740513977916,-67.59608927343222) -> llegada en: 1 minuto(s)
+(10.2346587034084593,-67.59578065191319) -> llegada en: 1 minuto(s)
+(10.236243355419127,-67.59547203039416) -> llegada en: 0 minuto(s)
+*    
+Entrega culminada.
+Usuario agrego valoracion: 4 a proveedor Delivery Food VE
+FIN SIMULACION
+
+
+PL/SQL procedure successfully completed.
+
+
+--EJECUCION DE MODULO ORDEN COMPRA
+BEGIN
+orden_de_compra();
+END;
+
+--LOG
+
+***********************************************
+*       INICIO MODULO DE ORDEN DE COMPRA      *
+***********************************************
+*    
+************** SELECCIONES *******************
+*    
+se selecciono el usuario de id: 8 con el id de direccion -> 7 codigo estado -> 11
+*    
+SELECCION DE PROVEEDOR Y ALIADO COMERCIAL, CONTRATO, SUCURSAL Y SEDE (compatibles con la direccion del usuario)
+*    
+se selecciono proveedor 9 con sede 9, aliado 11 con sucursal 11
+acuerdo 9 y su servicio 17
+se inserto el envio de id tracking 32
+*    
+*    
+se le asignaran 6 al envio 32
+************** INSERCION DE PRODUCTOS *******************
+*    
+*    
+producto 31 agregado a envio 32
+producto 31 agregado a envio 32
+producto 31 agregado a envio 32
+producto 31 agregado a envio 32
+producto 31 agregado a envio 32
+producto 31 agregado a envio 32
+*    
+*    
+se procede al modulo de asignacion de unidad a envio 32
+*    
+*    
+***********************************************
+*   INICIO MODULO DE ASIGNACION DE VEHICULO   *
+***********************************************
+*    
+Productos dentro del pedido: 6
+Existen: 1 envios dentro de la misma zona de destino
+*
+distancia entre el usuario y la sede delivery: 12118 metros
+¿ Existen motos disponibles?
+Existen 6 unidades de tipo moto disponibles
+Total  6 unidades
+Se están buscando unidades de tipo moto dentro de la misma sede
+Se ha asignado la unidad  26
+asignacion de sucursal
+id de asignacion de sucursal32
+*    
+*    
+se procede al modulo de despacho para unidad 26
+*    
+*    
+***********************************************
+*        MODULO DE DESPACHO DE UNIDADES       *
+***********************************************
+*    
+*    
+tipo de unidad: moto
+placa de unidad: 26
+velocidad de la unidad: 11.94 m/s
+*    
+Unidad 26 ha sido despachada a la sucursal correspondida al envio nro: 10 desde la sede de proveedor: Fat Panda
+coordenadas: 
+*    
+(10.814805166137563,-64.3319666143160414) -> llegada en: 388 minuto(s)
+(10.650550608234667,-64.8120324848084268) -> llegada en: 349 minuto(s)
+(10.486296050331771,-65.2920983553008122) -> llegada en: 311 minuto(s)
+(10.322041492428875,-65.7721642257931976) -> llegada en: 272 minuto(s)
+(10.157786934525979,-66.252230096285583) -> llegada en: 233 minuto(s)
+(9.993532376623083,-66.7322959667779684) -> llegada en: 194 minuto(s)
+(9.829277818720187,-67.2123618372703538) -> llegada en: 156 minuto(s)
+(9.665023260817291,-67.6924277077627392) -> llegada en: 117 minuto(s)
+(9.500768702914395,-68.1724935782551246) -> llegada en: 78 minuto(s)
+(9.336514145011499,-68.65255944874751) -> llegada en: 39 minuto(s)
+*    
+La unidad ha llegado a la sucursal 14
+*    
+La unidad ha pasado por las sucursales y ha sido despachada a ->  Santa Isabel municipio Arismendi 2 edo. Nueva Esparta, direccion del usuari@ Victoria
+(9.5073843027566191,-68.173150720213136) -> llegada en: 389 minuto(s)
+(9.6782544605017392,-67.693741991678762) -> llegada en: 350 minuto(s)
+(9.8491246182468593,-67.214333263144388) -> llegada en: 311 minuto(s)
+(10.0199947759919794,-66.734924534610014) -> llegada en: 272 minuto(s)
+(10.1908649337370995,-66.25551580607564) -> llegada en: 233 minuto(s)
+(10.3617350914822196,-65.776107077541266) -> llegada en: 194 minuto(s)
+(10.5326052492273397,-65.296698349006892) -> llegada en: 156 minuto(s)
+(10.7034754069724598,-64.817289620472518) -> llegada en: 117 minuto(s)
+(10.8743455647175799,-64.337880891938144) -> llegada en: 78 minuto(s)
+(11.0452157224627,-63.85847216340377) -> llegada en: 39 minuto(s)
+*    
+Entrega culminada.
+Usuario agrego valoracion: 2 a proveedor Fat Panda
+FIN SIMULACION
+
+
+PL/SQL procedure successfully completed.
+
+
