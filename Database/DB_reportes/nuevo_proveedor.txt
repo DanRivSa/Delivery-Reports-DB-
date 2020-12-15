@@ -1,0 +1,45 @@
+--MODULO DE NUEVO PROVEEDOR, CON NUEVA SEDE Y NUEVO ACUERDO COMERCIAL
+
+CREATE OR REPLACE FUNCTION nuevo_proveedor (username VARCHAR2,correo varchar2) RETURN NUMBER IS
+
+id_prov_anterior INT;
+id_sede_anterior INT;
+id_servicio_anterior INT;
+foto BLOB;
+id_calle INT;
+cant_envio INT;
+id_municipio INT;
+id_estado INT;
+id_acuerdo_anterior INT;
+id_aliado INT;
+
+
+BEGIN
+SELECT MAX (P.ID_PROVEEDOR) into id_prov_anterior from Proveedor P;
+SELECT MAX (S.ID_SEDE) into id_sede_anterior from Sede S;
+SELECT MAX (SER.ID_SERVICIO) into id_servicio_anterior from Servicio SER;
+SELECT F.FOTO into foto from Foto_PAuxiliar F;
+SELECT ROUND(DBMS_RANDOM.VALUE(1,40)) into id_calle FROM dual;
+SELECT ROUND (DBMS_RANDOM.VALUE(50,500)) into cant_envio FROM dual;
+SELECT C.C_MUN, C.C_ES into id_municipio, id_estado from Calle C where c.c_calle = id_calle;
+SELECT MAX (AS.ID_ACUERDO) into id_acuerdo_anterior from Acuerdo_Servicio AS
+SELECT ROUND (DBMS_RANDOM.VALUE(1,15)) into id_aliado FROM dual;
+
+dbms_output.put_line('*    ');
+dbms_output.put_line('***********************************************');
+dbms_output.put_line('*   INICIO MODULO DE REPOSICION DE UNIDADES   *');
+dbms_output.put_line('***********************************************');
+dbms_output.put_line('*    ');
+
+INSERT into PROVEEDOR values (id_prov_anterior+1,foto,datos_basicos(datos_basicos.Validar_Nombre(username),datos_basicos.Validar_Correo(correo));
+INSERT into SEDE values (id_sede_anterior+1,id_prov_anterior+1,id_calle,id_municipio,id_estado,datos_lugar(8.639846221406565, -70.23667000130578));
+INSERT into SERVICIO values (id_servicio_anteior+1, cant_envio, 5, id_prov_anterior+1);
+INSERT INTO ACUERDO_SERVICIO values (id_acuerdo_anterior, 'MES', 100, id_prov_anterior+1, id_servicio_anteior+1, 15/12/2020, 15/12/2021);
+
+dbms_output.put_line('FIN SIMULACION');
+END;
+
+SET serveroutput ON
+BEGIN
+nuevo_proveedor('Artuto','ar@gmail.com');
+END;
