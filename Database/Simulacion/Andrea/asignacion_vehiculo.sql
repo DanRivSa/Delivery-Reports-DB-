@@ -129,8 +129,9 @@ dbms_output.put_line('Existen: ' || cant_pedido || ' envios dentro de la misma z
                 dbms_output.put_line('La cantidad de envios sobrepasa la cantidad de unidades disponibles' );
                 dbms_output.put_line('*    ');
                 dbms_output.put_line('SE TRANSFIERE AL MODULO DE ENVIO RECURRENTES' );
-                envio_concurrente(id_pedido,sede,cant_pedido);
+                nuevo_id_unidad := envio_concurrente2(id_pedido,sede,cant_pedido);
                 -- SE EJECUTA MODULO DE ENVIOS CONCURECURRENTES
+                UPDATE ENVIO SET ID_UNIDAD = nuevo_id_unidad WHERE Tracking = id_pedido;
             END IF;
     ELSE 
         select id_unidad INTO asignado from envio where tracking = id_pedido;

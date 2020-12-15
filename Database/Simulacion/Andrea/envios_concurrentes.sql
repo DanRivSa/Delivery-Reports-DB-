@@ -1,6 +1,6 @@
 -- MODULO DE ENVIOS CONCURRENTES
 
-CREATE OR REPLACE PROCEDURE envio_concurrente (id_pedido INT, sede INT,cant_pedido INT) IS
+CREATE OR REPLACE FUNCTION envio_concurrente2 (id_pedido INT, sede INT,cant_pedido INT) RETURN NUMBER is
 total_uni INT;
 id_sede INT;
 id_prov INT;
@@ -34,8 +34,7 @@ dbms_output.put_line('*    ');
             SELECT u.id_unidad INTO nro_unidad from unidad u 
             WHERE u.tipo_unidad = 'moto' and u.cod_municipio = cod_municipio  AND  u.cod_estado = cod_estado and u.id_sede = sede AND u.estado_unidad = 'v';
             -- ASIGNAR UNIDAD PARA ASIGNAR TIPO MOTO
-            dbms_output.put_line('Se ha asignado la unidad ' || nro_unidad);
-            UPDATE ENVIO  SET ID_UNIDAD = nro_unidad WHERE Tracking = id_pedido;
+            RETURN nro_unidad;
     ELSE
         dbms_output.put_line('¿ Existe unidades de tipo moto disponibles?');
         dbms_output.put_line('Se procede a adquirir mas unidades de tipo moto');
@@ -51,10 +50,7 @@ dbms_output.put_line('*    ');
             cont_id := cont_id+1;
         END LOOP;
 
-        dbms_output.put_line('*    ');
-        UPDATE ENVIO e SET e.ID_UNIDAD = id_unidad+cont_id WHERE Tracking = id_pedido;
-        dbms_output.put_line('Se ha asignado la unidad ' || id_unidad+cont_id);
-
-
+            RETURN id_unidad+cont_id;
     END IF;
+    
 END;
