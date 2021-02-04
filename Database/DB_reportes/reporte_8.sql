@@ -9,8 +9,14 @@ WHERE env.tracking = 1;
 
 --PROCEDURE
 CREATE OR REPLACE PROCEDURE reporte_8(cur OUT SYS_REFCURSOR, tracking_num NUMBER) IS
+cant_registros INT;
 BEGIN
-        IF tracking_num != null THEN
+        SELECT COUNT(*) INTO cant_registros FROM envio env
+        INNER JOIN usuario us ON env.id_usuario_envio = us.id_usuario
+        INNER JOIN unidad u ON u.id_unidad = env.id_unidad
+        INNER JOIN  direccion dir ON dir.id_direccion = env.id_dir
+        WHERE env.tracking = tracking_num;
+        IF cant_registros > 0 THEN
         OPEN cur FOR
             SELECT env.tracking, env.fechas.fecha_inicio AS fecha_inicio, env.fechas.fecha_fin AS fecha_fin, 
             (SELECT COUNT(*) FROM producto_envio pr WHERE pr.tracking = env.tracking) AS cantidad_productos,
