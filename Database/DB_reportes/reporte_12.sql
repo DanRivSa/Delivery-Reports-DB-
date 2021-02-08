@@ -23,7 +23,7 @@ BEGIN
     INNER JOIN municipio mun_dest ON mun_dest.codigo_municipio = dir.cod_mun
     WHERE mun_sed.codigo_municipio = zona_origen AND mun_dest.codigo_municipio = zona_destino;
 
-    IF cant_registros > 0 AND zona_origen != null AND zona_destino !=null THEN
+    IF cant_registros > 0 THEN
         OPEN cur FOR
             SELECT prov.foto AS logo_proveedor, 
             mun_sed.nombre AS zona_origen,

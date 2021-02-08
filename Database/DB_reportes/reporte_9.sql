@@ -25,9 +25,9 @@ BEGIN
     inner join direccion d on e.id_dir = d.id_direccion 
     inner join municipio m on d.cod_mun = m.codigo_municipio
     inner join estado s on d.cod_es = s.codigo_estado
-    Where m.nombre= parametro_municipio and s.nombre = parametro_estado and e.fechas.fecha_inicio BETWEEN parametro_finicio and parametro_ffinal and rownum <=10;
+    Where m.nombre= parametro_municipio and s.nombre = parametro_estado and e.fechas.fecha_inicio BETWEEN parametro_finicio and parametro_ffinal;
 
-IF cant_registros > 0 AND parametro_estado != null AND parametro_municipio != null AND parametro_finicio !=null AND parametro_ffinal !=null THEN
+    IF cant_registros > 0  THEN
     OPEN cur9 FOR
         Select e.fechas.fecha_inicio as Fecha_Inicio, e.fechas.fecha_fin as Fecha_Fin, s.nombre as Estado, m.nombre as Zona, Case c.SECTOR
         WHEN 'A' THEN 'Alimentos'
@@ -40,7 +40,7 @@ IF cant_registros > 0 AND parametro_estado != null AND parametro_municipio != nu
         inner join direccion d on e.id_dir = d.id_direccion 
         inner join municipio m on d.cod_mun = m.codigo_municipio
         inner join estado s on d.cod_es = s.codigo_estado
-        Where m.nombre= parametro_municipio and s.nombre = parametro_estado and e.fechas.fecha_inicio BETWEEN parametro_finicio and parametro_ffinal and rownum <=10;
+        Where m.nombre= parametro_municipio and s.nombre = parametro_estado and e.fechas.fecha_inicio BETWEEN parametro_finicio and parametro_ffinal and rownum <=10 ORDER BY Cantidad_Productos desc;
 
     ELSE
     OPEN cur9 FOR
@@ -55,10 +55,10 @@ IF cant_registros > 0 AND parametro_estado != null AND parametro_municipio != nu
         inner join direccion d on e.id_dir = d.id_direccion 
         inner join municipio m on d.cod_mun = m.codigo_municipio
         inner join estado s on d.cod_es = s.codigo_estado
-        ORDER BY cantidad_productos desc 
+        ORDER BY cantidad_productos desc; 
 
     END IF;
 END;
 
 --LLAMADA JASPERSOFT
-{CALL reporte9($P{ORACLE_REF_CURSOR},$P{parametro_estado},$P{parametro_municipio},$P{parametro_finicio}, $P{parametro_ffinal} )}
+{CALL reporte9($P{ORACLE_REF_CURSOR},$P{parametro_municipio},$P{parametro_estado},$P{parametro_finicio}, $P{parametro_ffinal} )}

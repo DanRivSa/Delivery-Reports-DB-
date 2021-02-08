@@ -35,7 +35,7 @@ BEGIN
     INNER JOIN calle c ON d.cod_calle = c.c_calle
     where  p.id_proveedor =parametro_proveedor and es.nombre = parametro_estado and e.fechas.fecha_inicio >= parametro_finicio and e.fechas.fecha_inicio < parametro_ffinal;
 
-    IF cant_registros > 0 AND parametro_estado != null AND parametro_finicio !=null AND parametro_ffinal !=null THEN
+    IF cant_registros > 0  THEN
     OPEN cur7 FOR
         Select es.nombre as Estado, 
         P.DATOS_PROV.NOMBRE_USUARIO as Proveedor, 
