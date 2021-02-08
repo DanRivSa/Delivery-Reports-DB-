@@ -1,6 +1,6 @@
 --REPORTE 10
 --SELECT DE PRUEBA 
-Select ase.fechas.fecha_inicio as Fecha_Inicio, ase.fechas.fecha_fin as Fecha_Fin, ac.nombre as Comercio, P.DATOS_PROV.NOMBRE_USUARIO as Proveedor_Servicio, P.Foto as Logo_Proveedor, (select '$' || sum(ase.precio_as)
+Select ase.fechas.fecha_inicio as Fecha_Inicio, ase.fechas.fecha_fin as Fecha_Fin, ac.Foto as Comercio, P.DATOS_PROV.NOMBRE_USUARIO as Proveedor_Servicio, P.Foto as Logo_Proveedor, (select '$' || sum(ase.precio_as)
                                                                                                                                                                                         from acuerdo_Servicio ase, proveedor p
                                                                                                                                                                                         where (ase.id_prov_serv = p.id_proveedor) and (P.DATOS_PROV.NOMBRE_USUARIO = 'Ego')) as Ingresos
 from aliado_comercial ac, proveedor p, acuerdo_servicio ase
@@ -17,7 +17,7 @@ BEGIN
 
 IF cant_registros > 0 THEN
     OPEN cur10 FOR
-        Select ase.fechas.fecha_inicio as Fecha_Inicio, ase.fechas.fecha_fin as Fecha_Fin, ac.nombre as Comercio, P.DATOS_PROV.NOMBRE_USUARIO as Proveedor_Servicio, P.Foto as Logo_Proveedor, (select '$' || sum(ase.precio_as)
+        Select ase.fechas.fecha_inicio as Fecha_Inicio, ase.fechas.fecha_fin as Fecha_Fin, ac.foto as Comercio, P.DATOS_PROV.NOMBRE_USUARIO as Proveedor_Servicio, P.Foto as Logo_Proveedor, (select '$' || sum(ase.precio_as)
                                                                                                                                                                                                 from acuerdo_Servicio ase, proveedor p
                                                                                                                                                                                                 where (ase.id_prov_serv = p.id_proveedor) and (P.DATOS_PROV.NOMBRE_USUARIO = parametro_nombreproveedor)) as Ingresos
         from aliado_comercial ac, proveedor p, acuerdo_servicio ase
@@ -25,7 +25,7 @@ IF cant_registros > 0 THEN
 
 ELSE
     OPEN cur10 FOR
-        Select ase.fechas.fecha_inicio as Fecha_Inicio, ase.fechas.fecha_fin as Fecha_Fin, ac.nombre as Comercio, P.DATOS_PROV.NOMBRE_USUARIO as Proveedor_Servicio, P.Foto as Logo_Proveedor, (select '$' || sum(ase.precio_as)
+        Select ase.fechas.fecha_inicio as Fecha_Inicio, ase.fechas.fecha_fin as Fecha_Fin, ac.foto as Comercio, P.DATOS_PROV.NOMBRE_USUARIO as Proveedor_Servicio, P.Foto as Logo_Proveedor, (select '$' || sum(ase.precio_as)
                                                                                                                                                                                                 from acuerdo_Servicio ase, proveedor p
                                                                                                                                                                                                 where (ase.id_prov_serv = p.id_proveedor) ) as Ingresos
         from aliado_comercial ac, proveedor p, acuerdo_servicio ase
